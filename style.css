@@ -1452,3 +1452,100 @@ body.light-mode .footer-socials a i {
     }
 
 }
+
+/* ========================= */
+/* INTRO SCREEN */
+/* ========================= */
+
+#intro{
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #000;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    transition: opacity 0.8s ease,
+                visibility 0.8s ease;
+}
+
+
+/* HIDE */
+
+#intro.hide-intro{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* SVG */
+
+.signature-svg{
+    width: 500px;
+    height: 200px;
+
+    display: block;
+}
+
+
+/* TEXT */
+
+.signature-text{
+
+    fill: none;
+
+    stroke: url(#gradient);
+
+    stroke-width: 1.5;
+
+    font-size: 70px;
+
+    font-family: 'Allura', cursive;
+
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+
+    animation: writeText 2s ease forwards;
+}
+
+
+/* LINE */
+
+.signature-line{
+
+    fill: none;
+
+    stroke: url(#gradient);
+
+    stroke-width: 2;
+
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+
+    animation: drawLine 2s ease forwards 0.5s;
+}
+
+
+/* ANIMATION */
+
+@keyframes writeText{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawLine{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
