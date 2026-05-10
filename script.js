@@ -56,30 +56,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ========================= */
-/* INTRO ANIMATION */
+/* FINAL INTRO ANIMATION */
 /* ========================= */
 
-window.addEventListener("load", () => {
+/* ========================= */
+/* SMART INTRO CONTROL */
+/* ========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
 
     if (!intro) return;
 
+    // detect refresh
+    const nav =
+        performance.getEntriesByType("navigation")[0];
+
+    const isReload = nav && nav.type === "reload";
+
+    // detect normal page navigation
+    const fromInternalNavigation =
+        sessionStorage.getItem("internalNavigation");
+
+    // if coming from another section
+    if (fromInternalNavigation && !isReload) {
+
+        intro.style.display = "none";
+
+        return;
+
+    }
+
+    // play intro
     setTimeout(() => {
 
-        intro.style.transition = "opacity 0.8s ease";
-        intro.style.opacity = "0";
+        intro.classList.add("hide-intro");
 
         setTimeout(() => {
 
             intro.style.display = "none";
 
-        }, 800);
+        }, 300);
 
     }, 1800);
 
 });
 
+
+/* ========================= */
+/* INTERNAL NAVIGATION */
+/* ========================= */
+
+document.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        sessionStorage.setItem(
+            "internalNavigation",
+            "true"
+        );
+
+    });
+
+});
 
 /* ========================= */
 /* PARTICLE SYSTEM */
