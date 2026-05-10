@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Timeline | Sahil Shaikh</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">Sahil</div>
+
+<div class="nav-links">
+
+<a href="index.html">home</a>
+<a href="about.html">about</a>
+<a href="work.html">work</a>
+<a href="timeline.html">timeline</a>
+
+</div>
+
+</div>
+
+
+<!-- TIMELINE SECTION -->
+
+<section class="timeline-section">
+
+<h2 class="timeline-title">Timeline</h2>
+
+<p class="timeline-subtitle">
+
+My academic and professional journey.
+
+</p>
+
+
+
+<div class="timeline">
+
+<!-- progress line -->
+<div class="timeline-progress"></div>
+
+
+<!-- BCA START -->
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+Jun 2022
+</div>
+
+<div class="timeline-content">
+
+<h3>BCA Started</h3>
+
+<p>
+Started my Bachelor of Computer Applications (Science) at  
+New Arts, Commerce and Science College, Ahmednagar, Maharashtra.
+</p>
+
+<img src="newarts.JPEG" class="timeline-image">
+
+</div>
+
+</div>
+
+
+
+<!-- ACHIEVEMENTS -->
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+2023 – 2025
+</div>
+
+<div class="timeline-content">
+
+<h3>College Achievements</h3>
+
+<p>
+Received Best Sport Person and Best Volunteer awards for sports and
+college event contributions.
+</p>
+
+<img src="award.jpeg" class="timeline-image">
+
+</div>
+
+</div>
+
+
+
+<!-- BCA COMPLETE -->
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+Jun 2025
+</div>
+
+<div class="timeline-content">
+
+<h3>BCA Completed</h3>
+
+<p>
+Successfully completed Bachelor of Computer Applications with strong
+foundation in programming, databases, and software development.
+</p>
+
+<img src="comp.jpeg" class="timeline-image">
+
+</div>
+
+</div>
+
+
+
+<!-- MCA START -->
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+Jul 2025
+</div>
+
+<div class="timeline-content">
+
+<h3>MCA Started</h3>
+
+<p>
+Started Master of Computer Applications at MIT World Peace University,
+Pune to advance skills in Software Development.
+</p>
+
+<img src="me.jpeg" class="timeline-image">
+
+</div>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+<!-- SCRIPT (progress line + active dots) -->
+
+<script>
+
+window.addEventListener("scroll", function(){
+
+let timeline = document.querySelector(".timeline");
+
+let progress = document.querySelector(".timeline-progress");
+
+let items = document.querySelectorAll(".timeline-item");
+
+let rect = timeline.getBoundingClientRect();
+
+let windowHeight = window.innerHeight;
+
+let totalHeight = timeline.offsetHeight;
+
+let visible = windowHeight - rect.top;
+
+let percent = (visible / totalHeight) * 100;
+
+progress.style.height = percent + "%";
+
+
+items.forEach(item=>{
+
+let itemRect = item.getBoundingClientRect();
+
+if(itemRect.top < windowHeight/2){
+
+item.classList.add("active");
+
+}
+
+});
+
+});
+
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
