@@ -1270,3 +1270,10 @@ body.light-mode .footer-socials a i {
         font-size: 18px;
     }
 }
+#intro{
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    transition: 0.5s;
+}
