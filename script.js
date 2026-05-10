@@ -342,3 +342,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
+window.addEventListener("load", () => {
+    const intro = document.getElementById("intro");
+
+    setTimeout(() => {
+        intro.style.opacity = "0";
+
+        setTimeout(() => {
+            intro.style.display = "none";
+        }, 500);
+
+    }, 2000);
+});
