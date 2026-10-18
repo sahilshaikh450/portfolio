@@ -16,7 +16,7 @@
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 
 </head>
 
@@ -79,37 +79,81 @@
     <p class="page-subtitle">Feel free to reach out for opportunities or collaboration &mdash; I usually reply within a day.</p>
 </header>
 
-<div class="contact-container">
+<div class="contact-layout">
 
-<a href="mailto:sahilshaikh34088@gmail.com" class="contact-card">
-    <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-    <h3>Email</h3>
-    <span class="contact-text">sahilshaikh34088@gmail.com</span>
-</a>
+    <!-- EMAIL CARD -->
 
-<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" class="contact-card">
-    <span class="contact-icon"><i class="fab fa-linkedin-in"></i></span>
-    <h3>LinkedIn</h3>
-    <span class="contact-text">Connect with me</span>
-</a>
+    <section class="contact-main">
 
-<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" class="contact-card">
-    <span class="contact-icon"><i class="fab fa-github"></i></span>
-    <h3>GitHub</h3>
-    <span class="contact-text">@sahilshaikh450</span>
-</a>
+        <span class="hero-badge"><span class="dot"></span> Available for full-time roles &amp; internships</span>
 
-<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" class="contact-card">
-    <span class="contact-icon"><i class="fas fa-code"></i></span>
-    <h3>LeetCode</h3>
-    <span class="contact-text">@Sahilshaikh87</span>
-</a>
+        <h2>Let's build something great together.</h2>
 
-<a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-card">
-    <span class="contact-icon"><i class="fas fa-file-lines"></i></span>
-    <h3>Resume</h3>
-    <span class="contact-text">View / Download</span>
-</a>
+        <p>
+            Have an opportunity, a project idea or just want to say hi?
+            Drop me an email &mdash; it's the fastest way to reach me.
+        </p>
+
+        <div class="email-box">
+            <i class="fas fa-envelope"></i>
+            <span id="email-address">sahilshaikh34088@gmail.com</span>
+        </div>
+
+        <div class="contact-actions">
+            <a href="mailto:sahilshaikh34088@gmail.com" class="btn"><i class="fas fa-paper-plane"></i> Send Email</a>
+            <button type="button" class="btn btn-outline" id="copy-email" data-email="sahilshaikh34088@gmail.com">
+                <i class="fas fa-copy"></i> <span>Copy</span>
+            </button>
+        </div>
+
+        <ul class="contact-meta">
+            <li><i class="fas fa-location-dot"></i> Pune, Maharashtra, India</li>
+            <li><i class="fas fa-clock"></i> Replies within 24 hours</li>
+        </ul>
+
+    </section>
+
+    <!-- LINKS -->
+
+    <div class="contact-links">
+
+        <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-icon"><i class="fab fa-linkedin-in"></i></span>
+            <span class="contact-row-text">
+                <strong>LinkedIn</strong>
+                <span class="contact-text">Let's connect professionally</span>
+            </span>
+            <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-icon"><i class="fab fa-github"></i></span>
+            <span class="contact-row-text">
+                <strong>GitHub</strong>
+                <span class="contact-text">@sahilshaikh450</span>
+            </span>
+            <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-icon"><i class="fas fa-code"></i></span>
+            <span class="contact-row-text">
+                <strong>LeetCode</strong>
+                <span class="contact-text">@Sahilshaikh87</span>
+            </span>
+            <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-icon"><i class="fas fa-file-lines"></i></span>
+            <span class="contact-row-text">
+                <strong>Resume</strong>
+                <span class="contact-text">View or download my CV</span>
+            </span>
+            <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+
+    </div>
 
 </div>
 
@@ -168,7 +212,7 @@
 </footer>
 
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 
 </body>
 </html>

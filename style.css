@@ -1161,58 +1161,177 @@ ul {
 /* CONTACT */
 /* ========================= */
 
-.contact-container {
+.contact-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 22px;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    align-items: stretch;
 }
 
-.contact-card {
+.contact-main {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    padding: 36px;
+    border-radius: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+/* gradient glow in the corner */
+.contact-main::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.28), transparent 70%);
+    pointer-events: none;
+}
+
+.contact-main > * {
+    position: relative;
+}
+
+.contact-main .hero-badge {
+    margin-bottom: 20px;
+}
+
+.contact-main h2 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+}
+
+.contact-main p {
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 26px;
+}
+
+.email-box {
+    display: flex;
     align-items: center;
-    text-align: center;
-    padding: 30px 20px;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px dashed rgba(168, 85, 247, 0.4);
+    overflow-wrap: anywhere;
+}
+
+.email-box i {
+    color: #a78bfa;
+}
+
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.contact-actions .btn {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.contact-actions .btn.copied {
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #4ade80;
+}
+
+.contact-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.contact-meta i {
+    margin-right: 6px;
+    color: #a78bfa;
+}
+
+.contact-links {
+    display: grid;
+    gap: 14px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
     border-radius: 18px;
     text-decoration: none;
+    color: var(--text);
     background: var(--surface);
     border: 1px solid var(--border);
     transition: transform 0.35s var(--ease), border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.contact-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(79, 172, 254, 0.4);
-    box-shadow: 0 20px 40px rgba(79, 172, 254, 0.12);
+.contact-row:hover {
+    transform: translateX(6px);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.12);
 }
 
 .contact-icon {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 14px;
-    border-radius: 18px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 21px;
     color: #ffffff;
     background: var(--grad-soft);
     transition: transform 0.35s var(--ease);
 }
 
-.contact-card:hover .contact-icon {
+.contact-row:hover .contact-icon {
     transform: rotate(-8deg) scale(1.08);
 }
 
-.contact-card h3 {
-    margin-bottom: 6px;
-    color: var(--text);
+.contact-row-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contact-row-text strong {
+    font-size: 16px;
 }
 
 .contact-text {
     color: var(--muted);
     font-size: 14px;
-    overflow-wrap: anywhere;
+}
+
+.contact-arrow {
+    color: var(--muted);
+    transition: transform 0.3s var(--ease), color 0.3s ease;
+}
+
+.contact-row:hover .contact-arrow {
+    color: #a78bfa;
+    transform: translateX(4px);
 }
 
 /* ========================= */
@@ -1422,7 +1541,8 @@ body.light-mode .panel,
 body.light-mode .info-card,
 body.light-mode .stat,
 body.light-mode .timeline-content,
-body.light-mode .contact-card {
+body.light-mode .contact-main,
+body.light-mode .contact-row {
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
@@ -1430,6 +1550,7 @@ body.light-mode .contact-card {
 body.light-mode .project-links a,
 body.light-mode .tech-stack span,
 body.light-mode .chip,
+body.light-mode .email-box,
 body.light-mode .btn-outline {
     background: #f3f4f6;
     color: #111827;
@@ -1477,20 +1598,6 @@ body.light-mode .footer-bottom-line {
 /* RESPONSIVE */
 /* ========================= */
 
-@media (min-width: 1025px) {
-
-    /* five contact cards on one row; email gets room for the full address */
-    .contact-container {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    .contact-card:first-child {
-        grid-column: span 2;
-    }
-
-}
-
-
 @media (max-width: 1024px) {
 
     .about-grid {
@@ -1509,36 +1616,9 @@ body.light-mode .footer-bottom-line {
     }
 
     /* contact cards become compact rows */
-    .contact-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-    }
 
-    .contact-card:first-child {
-        grid-column: 1 / -1;
-    }
-
-    .contact-card {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-        column-gap: 16px;
-        align-items: center;
-        text-align: left;
-        padding: 16px 18px;
-    }
-
-    .contact-icon {
-        grid-row: span 2;
-        width: 50px;
-        height: 50px;
-        margin: 0;
-        font-size: 20px;
-    }
-
-    .contact-card h3 {
-        margin: 0;
-        font-size: 16px;
+    .contact-layout {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -1733,8 +1813,20 @@ body.light-mode .footer-bottom-line {
         margin-top: 50px;
     }
 
-    .contact-container {
-        grid-template-columns: 1fr;
+    .contact-main {
+        padding: 26px 22px;
+    }
+
+    .contact-main h2 {
+        font-size: 24px;
+    }
+
+    .email-box {
+        font-size: 15px;
+    }
+
+    .contact-actions .btn {
+        flex: 1 1 auto;
     }
 
     .stat strong {
@@ -1765,6 +1857,21 @@ body.light-mode .footer-bottom-line {
 
     .project-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-main {
+        padding: 22px 18px;
+    }
+
+    .contact-main .hero-badge {
+        font-size: 12px;
+    }
+
+    .email-box {
+        gap: 10px;
+        padding: 14px;
+        font-size: 14px;
+        overflow-wrap: normal;
     }
 
     .hero-actions .btn {
