@@ -16,11 +16,11 @@
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 
 </head>
 
-<body>
+<body id="top">
 
 <script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
 
@@ -180,55 +180,72 @@
 
 <footer class="footer">
 
-    <div class="footer-box">
+    <!-- CTA -->
+    <div class="footer-cta">
+        <div>
+            <h2>Have a project or role in mind?</h2>
+            <p>I'm open to full-time roles, internships and freelance work.</p>
+        </div>
+        <a href="contact.html" class="btn">Let's talk <i class="fas fa-arrow-right"></i></a>
+    </div>
 
-        <h2 class="footer-signature">Sahil</h2>
+    <!-- QUOTE -->
+    <blockquote class="footer-quote">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <p>
+            If it's <span class="word-beautiful">beautiful</span>, I'll build it.<br class="quote-break">
+            If it's <span class="word-broken" data-text="broken">broken</span>, I'll fix it.
+        </p>
+        <cite>&mdash; Sahil Shaikh</cite>
+    </blockquote>
 
-        <div class="footer-info">
-            <span class="footer-name">Sahil Shaikh</span>
-            <span class="footer-divider">|</span>
-            <span class="footer-role">Java Full Stack Developer</span>
+    <!-- COLUMNS -->
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+            <a href="index.html" class="footer-signature">Sahil</a>
+            <p class="footer-role">Java Full Stack Developer</p>
+            <p class="footer-tagline">
+                Building scalable solutions, creating meaningful digital experiences,
+                and turning ideas into impactful software.
+            </p>
         </div>
 
-        <p class="footer-tagline">
-            Building scalable solutions, creating meaningful digital experiences,
-            and turning ideas into impactful software.
-        </p>
+        <nav class="footer-col" aria-label="Footer">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="timeline.html">Timeline</a></li>
+                <li><a href="work.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-        <p class="footer-quote">
-            If it's beautiful, I'll build it. If it's broken, I'll fix it.
-        </p>
-
-        <div class="footer-line"></div>
-
-        <div class="footer-socials">
-
-            <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
+        <div class="footer-col">
+            <h3>Connect</h3>
+            <a href="mailto:sahilshaikh34088@gmail.com" class="footer-email">
+                <i class="fas fa-envelope"></i> sahilshaikh34088@gmail.com
             </a>
-
-            <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-                <i class="fas fa-code"></i>
-            </a>
-
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+            </div>
         </div>
 
-        <div class="footer-bottom-line"></div>
+    </div>
 
-        <p class="footer-copy">
-            &copy; 2026 Sahil Shaikh. Designed with passion and precision.
-        </p>
-
+    <!-- BOTTOM BAR -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Sahil Shaikh. Designed &amp; built with <span class="heart">&hearts;</span> in Pune.</p>
+        <a href="#top" class="back-to-top" aria-label="Back to top">Back to top <i class="fas fa-arrow-up"></i></a>
     </div>
 
 </footer>
 
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 
 </body>
 </html>

@@ -195,7 +195,7 @@ function toggleTheme() {
     const groups = [
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
         ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
-        ".section-cta", ".footer-box > *"
+        ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *"
     ];
 
     const items = document.querySelectorAll(groups.join(","));
