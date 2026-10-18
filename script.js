@@ -111,6 +111,44 @@ function toggleTheme() {
 
 
 /* ========================= */
+/* MOBILE MENU */
+/* ========================= */
+
+(function initMenu() {
+
+    const nav = document.querySelector(".navbar");
+    const toggle = document.getElementById("menu-toggle");
+
+    if (!nav || !toggle) return;
+
+    function setOpen(open) {
+        nav.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+
+    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+
+    nav.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") setOpen(false);
+    });
+
+    document.addEventListener("click", e => {
+        if (!nav.contains(e.target)) setOpen(false);
+    });
+
+    window.matchMedia("(min-width: 769px)").addEventListener("change", e => {
+        if (e.matches) setOpen(false);
+    });
+
+})();
+
+
+/* ========================= */
 /* TIMELINE PROGRESS */
 /* ========================= */
 
