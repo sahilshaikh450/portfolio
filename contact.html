@@ -6,54 +6,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contact | Sahil Shaikh</title>
+<meta name="description" content="Get in touch with Sahil Shaikh for opportunities or collaboration.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@1,600&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 </head>
 
 <body>
 
+<script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
 
 <!-- NAVBAR -->
 
-<div class="navbar">
+<nav class="navbar">
 
-<div class="logo">Sahil</div>
+<a href="index.html" class="logo signature">Sahil</a>
 
 <div class="nav-links">
 
-<a href="index.html">home</a>
-<a href="about.html">about</a>
-<a href="work.html">work</a>
-<a href="timeline.html">timeline</a>
-
-
-</div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="timeline.html">Timeline</a>
+<a href="work.html">Projects</a>
+<a href="contact.html" aria-current="page">Contact</a>
 
 </div>
 
+<div class="nav-icons">
 
-<!-- CONTACT SECTION -->
+<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+<i class="fas fa-code"></i>
+</a>
+
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark theme">
+<i class="fas fa-moon" id="theme-icon"></i>
+</button>
+
+</div>
+
+</nav>
+
+
+<main>
 
 <section class="contact-section">
 
-<h2 class="contact-title">
-Contact Me
-</h2>
+<h2 class="contact-title">Contact Me</h2>
 
-<p class="contact-subtitle">
-Feel free to reach out for opportunities or collaboration.
-</p>
-
+<p class="contact-subtitle">Feel free to reach out for opportunities or collaboration.</p>
 
 <div class="contact-container">
-
-
-<!-- EMAIL -->
 
 <div class="contact-card">
 
@@ -61,15 +79,9 @@ Feel free to reach out for opportunities or collaboration.
 
 <h3>Email</h3>
 
-<a href="mailto:sahilshaikh34088@gmail.com" class="contact-link">
-sahilshaikh34088@gmail.com
-</a>
+<a href="mailto:sahilshaikh34088@gmail.com" class="contact-link">sahilshaikh34088@gmail.com</a>
 
 </div>
-
-
-
-<!-- LINKEDIN -->
 
 <div class="contact-card">
 
@@ -77,15 +89,9 @@ sahilshaikh34088@gmail.com
 
 <h3>LinkedIn</h3>
 
-<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" class="contact-link">
-View Profile
-</a>
+<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" class="contact-link">View Profile</a>
 
 </div>
-
-
-
-<!-- GITHUB -->
 
 <div class="contact-card">
 
@@ -93,15 +99,9 @@ View Profile
 
 <h3>GitHub</h3>
 
-<a href="https://github.com/" target="_blank" class="contact-link">
-View Profile
-</a>
+<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" class="contact-link">@sahilshaikh450</a>
 
 </div>
-
-
-
-<!-- LEETCODE -->
 
 <div class="contact-card">
 
@@ -109,16 +109,79 @@ View Profile
 
 <h3>LeetCode</h3>
 
-<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" class="contact-link">
-View Profile
-</a>
+<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" class="contact-link">View Profile</a>
 
 </div>
 
+<div class="contact-card">
+
+<i class="fas fa-file-lines contact-icon"></i>
+
+<h3>Resume</h3>
+
+<a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-link">View / Download</a>
+
+</div>
 
 </div>
 
 </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-box">
+
+        <h2 class="footer-signature">Sahil</h2>
+
+        <div class="footer-info">
+            <span class="footer-name">Sahil Shaikh</span>
+            <span class="footer-divider">|</span>
+            <span class="footer-role">Java Full Stack Developer</span>
+        </div>
+
+        <p class="footer-tagline">
+            Building scalable solutions, creating meaningful digital experiences,
+            and turning ideas into impactful software.
+        </p>
+
+        <p class="footer-quote">
+            If it's beautiful, I'll build it. If it's broken, I'll fix it.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-socials">
+
+            <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                <i class="fas fa-code"></i>
+            </a>
+
+        </div>
+
+        <div class="footer-bottom-line"></div>
+
+        <p class="footer-copy">
+            &copy; 2026 Sahil Shaikh. Designed with passion and precision.
+        </p>
+
+    </div>
+
+</footer>
+
+
 <script src="script.js"></script>
 
 </body>

@@ -5,94 +5,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Portfolio Project | Sahil Shaikh</title>
+<title>Portfolio Website | Sahil Shaikh</title>
+<meta name="description" content="Premium personal portfolio with animations">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@1,600&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <link rel="stylesheet" href="../style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="navbar">
+<script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
 
-<div class="logo">Sahil</div>
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<a href="../index.html" class="logo signature">Sahil</a>
 
 <div class="nav-links">
 
-<a href="../index.html">home</a>
-<a href="../work.html">work</a>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a href="../timeline.html">Timeline</a>
+<a href="../work.html" aria-current="page">Projects</a>
+<a href="../contact.html">Contact</a>
 
 </div>
 
+<div class="nav-icons">
+
+<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+<i class="fas fa-code"></i>
+</a>
+
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark theme">
+<i class="fas fa-moon" id="theme-icon"></i>
+</button>
+
 </div>
 
+</nav>
+
+
+<main>
 
 <section class="project-page">
 
-<h1 class="project-title">
-Personal Portfolio Website
-</h1>
+<h1 class="project-title">Portfolio Website</h1>
 
 <p class="project-desc">
-
-A modern developer portfolio website built using HTML, CSS, and JavaScript to showcase my skills, projects, and experience with premium UI design.
-
+A modern developer portfolio website built with HTML, CSS and JavaScript to showcase my skills, projects and
+journey with a premium, animated UI.
 </p>
-
 
 <h3>Features</h3>
 
 <ul>
-
-<li>Modern responsive design</li>
-
-<li>Premium glassmorphism UI</li>
-
-<li>Project showcase section</li>
-
-<li>Timeline and About pages</li>
-
-<li>Fully responsive for mobile and desktop</li>
-
-<li>Smooth navigation and animations</li>
-
+    <li>Signature intro animation</li>
+    <li>Light / dark theme with saved preference</li>
+    <li>Auto-scrolling tech stack</li>
+    <li>Project showcase with live demo links</li>
+    <li>Animated timeline and About pages</li>
+    <li>Fully responsive for mobile and desktop</li>
 </ul>
-
 
 <h3>Tech Stack</h3>
 
 <div class="tech-stack">
-
-<span>HTML</span>
-<span>CSS</span>
-<span>JavaScript</span>
-
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
 </div>
 
+<h3>Screenshots</h3>
 
-<h3>Project Screenshot</h3>
-
-<h2>Project Screenshot</h2>
-
-<img src="1.png" alt="Portfolio Project" class="project-image">
-<img src="2.png" alt="Portfolio Project" class="project-image">
-<img src="2.png" alt="Portfolio Project" class="project-image">
-
-
-
+<img src="1.png" alt="Portfolio Website - Home page" class="project-image" loading="lazy">
+<img src="2.png" alt="Portfolio Website - Pages" class="project-image" loading="lazy">
+<img src="3.png" alt="Portfolio Website - Navbar and hero" class="project-image" loading="lazy">
 
 <div class="project-buttons">
-
-<a href="../index.html" class="btn">Live Website</a>
-
-<a href="../work.html" class="btn">Back</a>
-
+<a href="https://github.com/sahilshaikh450/portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+<a href="../work.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Projects</a>
 </div>
 
-
 </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-box">
+
+        <h2 class="footer-signature">Sahil</h2>
+
+        <div class="footer-info">
+            <span class="footer-name">Sahil Shaikh</span>
+            <span class="footer-divider">|</span>
+            <span class="footer-role">Java Full Stack Developer</span>
+        </div>
+
+        <p class="footer-tagline">
+            Building scalable solutions, creating meaningful digital experiences,
+            and turning ideas into impactful software.
+        </p>
+
+        <p class="footer-quote">
+            If it's beautiful, I'll build it. If it's broken, I'll fix it.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-socials">
+
+            <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                <i class="fas fa-code"></i>
+            </a>
+
+        </div>
+
+        <div class="footer-bottom-line"></div>
+
+        <p class="footer-copy">
+            &copy; 2026 Sahil Shaikh. Designed with passion and precision.
+        </p>
+
+    </div>
+
+</footer>
+
+
 <script src="../script.js"></script>
 
 </body>

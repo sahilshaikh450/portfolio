@@ -1,183 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LIFE OS | Sahil Shaikh</title>
+<meta name="description" content="Futuristic full stack productivity platform">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@1,600&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <link rel="stylesheet" href="../style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
+<script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
+
 <!-- NAVBAR -->
 
-<div class="navbar">
+<nav class="navbar">
 
-    <div class="logo">
-        Sahil
-    </div>
+<a href="../index.html" class="logo signature">Sahil</a>
 
-    <div class="nav-links">
+<div class="nav-links">
 
-        <a href="../index.html">
-            home
-        </a>
-
-        <a href="../work.html">
-            work
-        </a>
-
-    </div>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a href="../timeline.html">Timeline</a>
+<a href="../work.html" aria-current="page">Projects</a>
+<a href="../contact.html">Contact</a>
 
 </div>
 
-<!-- PROJECT -->
+<div class="nav-icons">
+
+<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+<i class="fas fa-code"></i>
+</a>
+
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark theme">
+<i class="fas fa-moon" id="theme-icon"></i>
+</button>
+
+</div>
+
+</nav>
+
+
+<main>
 
 <section class="project-page">
 
-    <h1 class="project-title">
-        LIFE OS
-    </h1>
+<h1 class="project-title">LIFE OS</h1>
 
-    <p class="project-desc">
+<p class="project-desc">
+LIFE OS is a futuristic full stack productivity and personal management platform built to help users
+organize their daily life efficiently. It combines habit tracking, task management, expense analytics,
+secure authentication and productivity systems into one modern ecosystem with a premium user experience.
+</p>
 
-        LIFE OS is a futuristic full stack productivity and personal management platform built to help users organize their daily life efficiently.
+<h3>Features</h3>
 
-        The platform combines habit tracking, task management, expense analytics, secure authentication, and productivity systems into one modern ecosystem with a premium user experience.
+<ul>
+    <li>Secure JWT authentication system</li>
+    <li>Habit tracking and streak management</li>
+    <li>Task and productivity management</li>
+    <li>Expense tracking and budgeting (Wealth Map)</li>
+    <li>Interactive analytics dashboard</li>
+    <li>Protected routes and authorization</li>
+    <li>REST API architecture</li>
+    <li>Responsive modern UI design</li>
+</ul>
 
-    </p>
+<h3>Tech Stack</h3>
 
-    <!-- FEATURES -->
+<div class="tech-stack">
+    <span>React</span>
+    <span>JavaScript</span>
+    <span>Zustand</span>
+    <span>Axios</span>
+    <span>Java</span>
+    <span>Spring Boot</span>
+    <span>Spring Security</span>
+    <span>JWT</span>
+    <span>JPA</span>
+    <span>H2 Database</span>
+</div>
 
-    <h3>
-        Features
-    </h3>
+<h3>Screenshots</h3>
 
-    <ul>
+<img src="createacc.png" alt="LIFE OS - Create account" class="project-image" loading="lazy">
+<img src="signinpage.png" alt="LIFE OS - Sign in" class="project-image" loading="lazy">
+<img src="home.png" alt="LIFE OS - Dashboard" class="project-image" loading="lazy">
+<img src="habitpage.png" alt="LIFE OS - Habits" class="project-image" loading="lazy">
+<img src="creatinghabit.png" alt="LIFE OS - Creating a habit" class="project-image" loading="lazy">
+<img src="taskpage.png" alt="LIFE OS - Tasks" class="project-image" loading="lazy">
+<img src="creatingtask.png" alt="LIFE OS - Creating a task" class="project-image" loading="lazy">
+<img src="addingt.png" alt="LIFE OS - Adding a transaction" class="project-image" loading="lazy">
+<img src="wealthmap.png" alt="LIFE OS - Wealth map" class="project-image" loading="lazy">
 
-        <li>
-            Secure JWT authentication system
-        </li>
-
-        <li>
-            Habit tracking and streak management
-        </li>
-
-        <li>
-            Task and productivity management
-        </li>
-
-        <li>
-            Expense tracking and budgeting
-        </li>
-
-        <li>
-            Interactive analytics dashboard
-        </li>
-
-        <li>
-            Responsive modern UI design
-        </li>
-
-        <li>
-            Protected routes and authorization
-        </li>
-
-        <li>
-            REST API architecture
-        </li>
-
-        <li>
-            Persistent database integration
-        </li>
-
-        <li>
-            Modern full stack architecture
-        </li>
-
-    </ul>
-
-    <!-- TECH STACK -->
-
-    <h3>
-        Tech Stack
-    </h3>
-
-    <div class="tech-stack">
-
-        <span>React</span>
-
-        <span>JavaScript</span>
-
-        <span>Zustand</span>
-
-        <span>Axios</span>
-
-        <span>Java</span>
-
-        <span>Spring Boot</span>
-
-        <span>Spring Security</span>
-
-        <span>JWT</span>
-
-        <span>H2 Database</span>
-
-        <span>JPA</span>
-
-    </div>
-
-    <!-- SCREENSHOTS -->
-
-    <h3>
-        Project Screenshot
-    </h3>
-
-    <img src="./createacc.png" alt="Life OS Screenshot" class="project-image">
-
-    <img src="./signinpage.png" alt="Life OS Screenshot" class="project-image">
-
-    <img src="./home.png" alt="Life OS Screenshot" class="project-image">
-
-    <img src="./habitpage.png" alt="Life OS Screenshot" class="project-image">
-
-    <img src="./taskpage.png" alt="Life OS Screenshot" class="project-image">
-
-    <img src="./wealthmap.png" alt="Life OS Screenshot" class="project-image">
-
-    <!-- BUTTONS -->
-
-    <div class="project-buttons">
-
-        <a
-            href="https://github.com/sahilshaikh450/life-os"
-            target="_blank"
-            class="btn"
-        >
-            GitHub
-        </a>
-
-        <a
-            href="../work.html"
-            class="btn"
-        >
-            Back
-        </a>
-
-    </div>
+<div class="project-buttons">
+<a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a href="../work.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+</div>
 
 </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-box">
+
+        <h2 class="footer-signature">Sahil</h2>
+
+        <div class="footer-info">
+            <span class="footer-name">Sahil Shaikh</span>
+            <span class="footer-divider">|</span>
+            <span class="footer-role">Java Full Stack Developer</span>
+        </div>
+
+        <p class="footer-tagline">
+            Building scalable solutions, creating meaningful digital experiences,
+            and turning ideas into impactful software.
+        </p>
+
+        <p class="footer-quote">
+            If it's beautiful, I'll build it. If it's broken, I'll fix it.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-socials">
+
+            <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                <i class="fas fa-code"></i>
+            </a>
+
+        </div>
+
+        <div class="footer-bottom-line"></div>
+
+        <p class="footer-copy">
+            &copy; 2026 Sahil Shaikh. Designed with passion and precision.
+        </p>
+
+    </div>
+
+</footer>
+
 
 <script src="../script.js"></script>
 
 </body>
-
 </html>
