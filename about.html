@@ -16,7 +16,7 @@
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 
 </head>
 
@@ -63,87 +63,62 @@
 </nav>
 
 
-<main>
+<main class="page">
 
-<!-- ABOUT HERO -->
+<header class="page-header">
+    <span class="eyebrow">About Me</span>
+    <h1 class="page-title">The Story So Far</h1>
+    <p class="page-subtitle">MCA student, full stack developer and district-level Kho-Kho player from Pune, India.</p>
+</header>
 
-<div class="about-hero">
+<div class="about-grid">
 
-    <p class="about-mini-title">ABOUT ME</p>
+    <!-- LEFT -->
 
-    <h1 class="about-big-title">The <span>Story</span> So Far</h1>
+    <aside class="about-left">
 
-</div>
-
-<!-- ABOUT SECTION -->
-
-<section class="about-section-modern">
-
-    <!-- LEFT SIDE -->
-
-    <div class="about-left">
-
-        <div class="about-image-card">
-            <div class="ss-logo">SS</div>
-            <div class="location-badge">📍 Pune, India</div>
+        <div class="photo-card">
+            <img src="profile.webp" alt="Sahil Shaikh at MIT World Peace University" width="480" height="600">
+            <span class="location-badge">📍 Pune, India</span>
         </div>
 
-        <div class="quick-info-card">
-            <div class="quick-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div>
-                <h3>MCA Student</h3>
-                <p>MIT World Peace University</p>
-            </div>
+        <div class="stats">
+            <div class="stat"><strong>3+</strong><span>Live Projects</span></div>
+            <div class="stat"><strong>8.6</strong><span>BCA CGPA</span></div>
+            <div class="stat"><strong>2</strong><span>College Awards</span></div>
         </div>
 
-        <div class="quick-info-card">
-            <div class="quick-icon"><i class="fas fa-code"></i></div>
-            <div>
-                <h3>Java Full Stack</h3>
-                <p>Developer (Fresher)</p>
-            </div>
-        </div>
+    </aside>
 
-        <div class="quick-info-card">
-            <div class="quick-icon"><i class="fas fa-trophy"></i></div>
-            <div>
-                <h3>District-Level</h3>
-                <p>Kho-Kho Player</p>
-            </div>
-        </div>
-
-        <div class="quick-info-card">
-            <div class="quick-icon"><i class="fas fa-star"></i></div>
-            <div>
-                <h3>BCA CGPA 8.6</h3>
-                <p>SPPU &middot; New Arts, Commerce and Science College, Ahmednagar</p>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT -->
 
     <div class="about-right">
 
-        <div class="about-info-card">
+        <div class="info-card">
             <div class="info-icon"><i class="fas fa-user"></i></div>
             <div>
-                <span>WHAT I DO</span>
+                <h3>What I do</h3>
                 <p>
                     I&rsquo;m an MCA student at MIT World Peace University and a passionate Java Full Stack
                     Developer. I build scalable applications with Java, Spring Boot, React, MySQL and modern
                     JavaScript &mdash; turning complex problems into clean, usable software.
                 </p>
+                <div class="chip-row">
+                    <span class="chip"><i class="fab fa-java"></i> Java</span>
+                    <span class="chip"><i class="fas fa-leaf"></i> Spring Boot</span>
+                    <span class="chip"><i class="fab fa-react"></i> React</span>
+                    <span class="chip"><i class="fas fa-database"></i> MySQL</span>
+                    <span class="chip"><i class="fas fa-shield-halved"></i> JWT</span>
+                </div>
             </div>
         </div>
 
-        <div class="about-info-card">
+        <div class="info-card">
             <div class="info-icon"><i class="fas fa-laptop-code"></i></div>
             <div>
-                <span>CURRENT FOCUS</span>
+                <h3>Current focus</h3>
                 <p>
-                    Currently pursuing MCA and shipping real-world products like
+                    Pursuing MCA and shipping real-world products like
                     <a href="projects/life-os.html" class="contact-link">LIFE OS</a>,
                     <a href="projects/aviro.html" class="contact-link">AVIRO</a> and the AI-powered
                     <a href="projects/resume-enhancer.html" class="contact-link">Resume Enhancer</a>
@@ -152,22 +127,32 @@
             </div>
         </div>
 
-        <div class="about-info-card">
-            <div class="info-icon"><i class="fas fa-building-columns"></i></div>
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
             <div>
-                <span>EDUCATION</span>
+                <h3>Education</h3>
                 <p>
-                    BCA graduate from Savitribai Phule Pune University with a strong foundation in programming,
-                    databases and software engineering &mdash; CGPA 8.6. Now advancing through MCA at MIT-WPU
-                    with CGPA 7.5.
+                    <strong>MCA</strong> &mdash; MIT World Peace University, Pune (2025 &ndash; present, CGPA 7.5)<br>
+                    <strong>BCA (Science)</strong> &mdash; New Arts, Commerce and Science College, Ahmednagar &middot; SPPU (2022 &ndash; 2025, CGPA 8.6)
                 </p>
             </div>
         </div>
 
-        <div class="about-info-card">
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-trophy"></i></div>
+            <div>
+                <h3>Beyond code</h3>
+                <p>
+                    District-level Kho-Kho player, awarded Best Sport Person and Best Volunteer in college &mdash;
+                    sport taught me teamwork, discipline and staying calm under pressure.
+                </p>
+            </div>
+        </div>
+
+        <div class="info-card">
             <div class="info-icon"><i class="fas fa-envelope"></i></div>
             <div>
-                <span>GET IN TOUCH</span>
+                <h3>Get in touch</h3>
                 <p>
                     Reach out via
                     <a href="mailto:sahilshaikh34088@gmail.com" class="contact-link">sahilshaikh34088@gmail.com</a>
@@ -180,7 +165,7 @@
 
     </div>
 
-</section>
+</div>
 
 </main>
 
@@ -237,7 +222,7 @@
 </footer>
 
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>

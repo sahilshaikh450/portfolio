@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 
 </head>
 
@@ -93,18 +93,20 @@
 
 <section class="hero">
 
-<h1>Hi, I'm Sahil Shaikh</h1>
+<span class="hero-badge"><span class="dot"></span> Open to Software Developer roles</span>
 
-<h2 class="gradient-text">Java Full Stack Developer</h2>
+<h1>Hi, I'm Sahil Shaikh <span class="wave">👋</span></h1>
+
+<h2 class="gradient-text"><span id="typing" data-words='["Java Full Stack Developer", "Spring Boot + React Engineer", "AI Product Builder", "MCA Student @ MIT-WPU"]'>Java Full Stack Developer</span><span class="typing-caret" aria-hidden="true"></span></h2>
 
 <p class="desc">
-Motivated MCA student specializing in Full Stack Development,
-Java, React, and scalable applications.
+Motivated MCA student building full stack products with Java, Spring Boot and React &mdash;
+from secure REST APIs to polished, animated interfaces.
 </p>
 
 <div class="hero-actions">
-    <a href="work.html" class="btn">View Projects</a>
-    <a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline resume-btn">
+    <a href="work.html" class="btn"><i class="fas fa-rocket"></i> View Projects</a>
+    <a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
         <i class="fas fa-file-lines"></i> View Resume
     </a>
 </div>
@@ -116,7 +118,10 @@ Java, React, and scalable applications.
 
 <section class="tech-section">
 
-<h2 class="tech-title">Technology Stack</h2>
+<header class="page-header">
+    <span class="eyebrow">Skills</span>
+    <h2 class="page-title">Technology Stack</h2>
+</header>
 
 <h3 class="tech-category">Languages</h3>
 
@@ -211,7 +216,7 @@ Java, React, and scalable applications.
 
 <h3 class="tech-category">Tools &amp; Technologies</h3>
 
-<div class="tech-scroll">
+<div class="tech-scroll reverse">
     <div class="tech-track">
 
         <div class="tech-card">
@@ -314,90 +319,81 @@ Java, React, and scalable applications.
 
 <!-- FEATURED PROJECTS -->
 
-<section class="featured-section">
+<section class="page">
 
-<h2 class="featured-title">Featured Projects</h2>
+<header class="page-header">
+    <span class="eyebrow">Featured Work</span>
+    <h2 class="page-title">Featured Projects</h2>
+    <p class="page-subtitle">Live, full stack products I've designed and built.</p>
+</header>
 
-<p class="featured-subtitle">Live, full stack products I've designed and built.</p>
-
-<div class="featured-container">
+<div class="project-grid">
 
     <!-- LIFE OS -->
-    <div class="project-card">
+    <article class="project-card">
 
-        <div class="project-content">
+        <a href="projects/life-os.html" class="project-art" aria-label="LIFE OS details">
+            <span class="project-icon">LO</span>
+            <span class="live-badge">Live</span>
+        </a>
+
+        <div class="project-body">
             <h3>LIFE OS</h3>
-            <p>Futuristic full stack productivity platform</p>
-            <span class="project-year">2026</span>
+            <p>Habits, tasks and money in one dashboard: streaks, a Kanban-style task engine and an expense analytics map.</p>
             <div class="project-tags"><span>React</span><span>Spring Boot</span><span>JWT</span></div>
+            <div class="project-links">
+<a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a href="projects/life-os.html"><i class="fas fa-circle-info"></i> Details</a>
+            </div>
         </div>
 
-        <div class="project-overlay">
-
-            <a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="LIFE OS live demo" title="Live demo">
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="projects/life-os.html" aria-label="LIFE OS details" title="Project details">
-                <i class="fas fa-circle-info"></i>
-            </a>
-
-        </div>
-
-    </div>
+    </article>
 
     <!-- Resume Enhancer -->
-    <div class="project-card">
+    <article class="project-card">
 
-        <div class="project-content">
+        <a href="projects/resume-enhancer.html" class="project-art" aria-label="Resume Enhancer details">
+            <span class="project-icon">RE</span>
+            <span class="live-badge">Live</span>
+        </a>
+
+        <div class="project-body">
             <h3>Resume Enhancer</h3>
-            <p>AI-powered career platform for job seekers</p>
-            <span class="project-year">2026</span>
-            <div class="project-tags"><span>Next.js</span><span>Express.js</span><span>Groq Llama 3</span></div>
+            <p>ATS analyzer, AI resume builder, cover letters, interview Q&amp;A and a career-coach chatbot powered by Groq LLMs.</p>
+            <div class="project-tags"><span>Next.js</span><span>Express.js</span><span>Groq AI</span></div>
+            <div class="project-links">
+<a href="https://resume-enhancer-psi.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a href="https://github.com/sahilshaikh450/resume-enhancer" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+<a href="projects/resume-enhancer.html"><i class="fas fa-circle-info"></i> Details</a>
+            </div>
         </div>
 
-        <div class="project-overlay">
-
-            <a href="https://resume-enhancer-psi.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Resume Enhancer live demo" title="Live demo">
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="https://github.com/sahilshaikh450/resume-enhancer" target="_blank" rel="noopener noreferrer" aria-label="Resume Enhancer source code" title="Source code">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="projects/resume-enhancer.html" aria-label="Resume Enhancer details" title="Project details">
-                <i class="fas fa-circle-info"></i>
-            </a>
-
-        </div>
-
-    </div>
+    </article>
 
     <!-- AVIRO -->
-    <div class="project-card">
+    <article class="project-card">
 
-        <div class="project-content">
+        <a href="projects/aviro.html" class="project-art" aria-label="AVIRO details">
+            <span class="project-icon">AV</span>
+            <span class="live-badge">Live</span>
+        </a>
+
+        <div class="project-body">
             <h3>AVIRO</h3>
-            <p>College ride-sharing platform for Pune students</p>
-            <span class="project-year">2026</span>
+            <p>Affordable, Verified &amp; Intelligent Ride Organizer with ID verification, live GPS tracking, chat and UPI payments.</p>
             <div class="project-tags"><span>Spring Boot</span><span>React</span><span>WebSocket</span></div>
+            <div class="project-links">
+<a href="https://aviro-affordable-verified-intellige.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a href="projects/aviro.html"><i class="fas fa-circle-info"></i> Details</a>
+            </div>
         </div>
 
-        <div class="project-overlay">
-
-            <a href="https://aviro-affordable-verified-intellige.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="AVIRO live demo" title="Live demo">
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="projects/aviro.html" aria-label="AVIRO details" title="Project details">
-                <i class="fas fa-circle-info"></i>
-            </a>
-
-        </div>
-
-    </div>
+    </article>
 
 </div>
 
-<div class="hero-actions">
-    <a href="work.html" class="btn btn-outline">See all projects</a>
+<div class="section-cta">
+    <a href="work.html" class="btn btn-outline">See all projects <i class="fas fa-arrow-right"></i></a>
 </div>
 
 </section>
@@ -457,7 +453,7 @@ Java, React, and scalable applications.
 </footer>
 
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>
