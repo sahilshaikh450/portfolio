@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    body.light-mode .project-overlay a{
-    background:#f3f4f6;
-    color:#111827;
-    border:1px solid rgba(0,0,0,0.08);
-}
 
-body.light-mode .project-overlay a i{
-    color:#111827;
-}
-</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sahil Shaikh | Portfolio</title>
+<meta name="description" content="Sahil Shaikh - Java Full Stack Developer and MCA student. Projects, skills, timeline and contact.">
 
-<link rel="stylesheet" href="style.css">
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-<!-- Add this font in <head> if not already added -->
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Add this inside your <head> section -->
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@1,600&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 
 <!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
+<script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
 
 <!-- SIGNATURE INTRO -->
 
-<div id="intro">
+<div id="intro" aria-hidden="true">
 
 <svg viewBox="0 0 500 200" class="signature-svg">
 
@@ -51,9 +39,7 @@ body.light-mode .project-overlay a i{
 </linearGradient>
 </defs>
 
-<text x="50" y="120" class="signature-text">
-Sahil
-</text>
+<text x="50" y="120" class="signature-text">Sahil</text>
 
 <path d="M60 150 Q200 190 340 150" class="signature-line"/>
 
@@ -62,44 +48,46 @@ Sahil
 </div>
 
 
-
 <!-- NAVBAR -->
 
-<div class="navbar">
+<nav class="navbar">
 
-<div class="logo signature">Sahil</div>
+<a href="index.html" class="logo signature">Sahil</a>
 
 <div class="nav-links">
 
-<a href="timeline.html">Timeline</a>
+<a href="index.html" aria-current="page">Home</a>
 <a href="about.html">About</a>
-<a href="work.html">Work</a>
-
+<a href="timeline.html">Timeline</a>
+<a href="work.html">Projects</a>
 <a href="contact.html">Contact</a>
 
 </div>
 
 <div class="nav-icons">
 
-<a href="https://linkedin.com" target="_blank">
+<a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
 <i class="fab fa-linkedin"></i>
 </a>
 
-<a href="https://github.com" target="_blank">
+<a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 <i class="fab fa-github"></i>
 </a>
 
-<a href="https://leetcode.com" target="_blank">
+<a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
 <i class="fas fa-code"></i>
 </a>
 
-<i class="fas fa-moon" id="theme-icon" onclick="toggleTheme()"></i>
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark theme">
+<i class="fas fa-moon" id="theme-icon"></i>
+</button>
 
 </div>
 
-</div>
+</nav>
 
 
+<main>
 
 <!-- HERO -->
 
@@ -107,50 +95,34 @@ Sahil
 
 <h1>Hi, I'm Sahil Shaikh</h1>
 
-<h2 class="gradient-text">
-Java Full Stack Developer
-</h2>
+<h2 class="gradient-text">Java Full Stack Developer</h2>
 
 <p class="desc">
 Motivated MCA student specializing in Full Stack Development,
 Java, React, and scalable applications.
 </p>
 
+<div class="hero-actions">
+    <a href="work.html" class="btn">View Projects</a>
+    <a href="Sahil%20Shaikh%20resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline resume-btn">
+        <i class="fas fa-file-lines"></i> View Resume
+    </a>
+</div>
+
 </section>
 
-
-<!-- RESUME BUTTON SECTION (add below your intro paragraph) -->
 
 <!-- TECH STACK -->
 
 <section class="tech-section">
 
-
-    
-
-<h2 class="tech-title">
-Technology Stack
-</h2>
-
-<div class="resume-section">
-    <a href="Sahil Shaikh resume.pdf" target="_blank" class="resume-btn">
-        View Resume ▸
-    </a>
-</div>
-
-<!-- LANGUAGES MOVING -->
-
-
-
-<!-- LANGUAGES MOVING -->
-<!-- LANGUAGES MOVING -->
+<h2 class="tech-title">Technology Stack</h2>
 
 <h3 class="tech-category">Languages</h3>
 
 <div class="tech-scroll">
     <div class="tech-track">
 
-        <!-- Original -->
         <div class="tech-card">
             <i class="devicon-java-plain colored"></i>
             <span>Java</span>
@@ -191,44 +163,44 @@ Technology Stack
             <span>SQL</span>
         </div>
 
-        <!-- Duplicate Full Row -->
+        <!-- duplicate row for seamless loop -->
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-java-plain colored"></i>
             <span>Java</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-c-plain colored"></i>
             <span>C</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-cplusplus-plain colored"></i>
             <span>C++</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-javascript-plain colored"></i>
             <span>JavaScript</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-html5-plain colored"></i>
             <span>HTML</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-css3-plain colored"></i>
             <span>CSS</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-react-original colored"></i>
             <span>React</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-mysql-plain colored"></i>
             <span>SQL</span>
         </div>
@@ -237,22 +209,18 @@ Technology Stack
 </div>
 
 
-<!-- TOOLS -->
-
-<h3 class="tech-category">Tools & Technologies</h3>
+<h3 class="tech-category">Tools &amp; Technologies</h3>
 
 <div class="tech-scroll">
     <div class="tech-track">
 
-        <!-- Original -->
-
         <div class="tech-card">
             <i class="devicon-git-plain colored"></i>
             <span>Git</span>
         </div>
 
         <div class="tech-card">
-            <i class="devicon-github-original colored"></i>
+            <i class="devicon-github-original"></i>
             <span>GitHub</span>
         </div>
 
@@ -287,156 +255,158 @@ Technology Stack
         </div>
 
         <div class="tech-card">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-shield-halved"></i>
             <span>JWT</span>
         </div>
 
+        <!-- duplicate row for seamless loop -->
 
-        <!-- Duplicate Full Row -->
-
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-git-plain colored"></i>
             <span>Git</span>
         </div>
 
-        <div class="tech-card">
-            <i class="devicon-github-original colored"></i>
+        <div class="tech-card" aria-hidden="true">
+            <i class="devicon-github-original"></i>
             <span>GitHub</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-vscode-plain colored"></i>
             <span>VS Code</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-figma-plain colored"></i>
             <span>Figma</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-spring-plain colored"></i>
             <span>Spring Boot</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-mysql-plain colored"></i>
             <span>MySQL</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-mongodb-plain colored"></i>
             <span>MongoDB</span>
         </div>
 
-        <div class="tech-card">
+        <div class="tech-card" aria-hidden="true">
             <i class="devicon-postman-plain colored"></i>
             <span>Postman</span>
         </div>
 
-        <div class="tech-card">
-            <i class="fas fa-shield-alt"></i>
+        <div class="tech-card" aria-hidden="true">
+            <i class="fas fa-shield-halved"></i>
             <span>JWT</span>
         </div>
 
     </div>
-</div>
-<!-- FEATURED PROJECTS -->
-
-<!-- FEATURED PROJECTS -->
-
-<!-- FEATURED PROJECTS -->
-
-<section class="featured-section">
-
-<h2>Featured Projects</h2>
-
-<div class="featured-container">
-
-    <!-- Portfolio Project -->
-    <div class="project-card">
-
-        <div class="project-content">
-            <h3>Portfolio Website</h3>
-            <p>Premium portfolio with animations</p>
-            <span>2026</span>
-        </div>
-
-        <div class="project-overlay">
-
-            <a href="https://github.com/sahilshaikh450/portfolio" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="projects/portfolio.html" target="_blank">
-                <i class="fas fa-play-circle"></i>
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- Placement Project -->
-    <div class="project-card">
-
-     <div class="project-content">
-
-    <h3>LIFE OS</h3>
-
-    <p>
-        Futuristic Full Stack Productivity Platform
-    </p>
-
-    <span>2026</span>
-
-</div>
-
-        <div class="project-overlay">
-
-            <a href="https://github.com/sahilshaikh450/life-os" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="projects/placement.html" target="_blank">
-                <i class="fas fa-play-circle"></i>
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- AVIRO Project -->
-    <div class="project-card">
-
-        <div class="project-content">
-            <h3>AVIRO</h3>
-            <p>Java Full Stack ride sharing project</p>
-            <span>2026</span>
-        </div>
-
-        <div class="project-overlay">
-
-            <a href="https://github.com/sahilshaikh450/AVIRO" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="projects/lostfound.html" target="_blank">
-                <i class="fas fa-play-circle"></i>
-            </a>
-
-        </div>
-
-    </div>
-
 </div>
 
 </section>
 
 
+<!-- FEATURED PROJECTS -->
+
+<section class="featured-section">
+
+<h2 class="featured-title">Featured Projects</h2>
+
+<p class="featured-subtitle">Live, full stack products I've designed and built.</p>
+
+<div class="featured-container">
+
+    <!-- LIFE OS -->
+    <div class="project-card">
+
+        <div class="project-content">
+            <h3>LIFE OS</h3>
+            <p>Futuristic full stack productivity platform</p>
+            <span class="project-year">2026</span>
+            <div class="project-tags"><span>React</span><span>Spring Boot</span><span>JWT</span></div>
+        </div>
+
+        <div class="project-overlay">
+
+            <a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="LIFE OS live demo" title="Live demo">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="projects/life-os.html" aria-label="LIFE OS details" title="Project details">
+                <i class="fas fa-circle-info"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Resume Enhancer -->
+    <div class="project-card">
+
+        <div class="project-content">
+            <h3>Resume Enhancer</h3>
+            <p>AI-powered career platform for job seekers</p>
+            <span class="project-year">2026</span>
+            <div class="project-tags"><span>Next.js</span><span>Express.js</span><span>Groq Llama 3</span></div>
+        </div>
+
+        <div class="project-overlay">
+
+            <a href="https://resume-enhancer-psi.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Resume Enhancer live demo" title="Live demo">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://github.com/sahilshaikh450/resume-enhancer" target="_blank" rel="noopener noreferrer" aria-label="Resume Enhancer source code" title="Source code">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="projects/resume-enhancer.html" aria-label="Resume Enhancer details" title="Project details">
+                <i class="fas fa-circle-info"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- AVIRO -->
+    <div class="project-card">
+
+        <div class="project-content">
+            <h3>AVIRO</h3>
+            <p>College ride-sharing platform for Pune students</p>
+            <span class="project-year">2026</span>
+            <div class="project-tags"><span>Spring Boot</span><span>React</span><span>WebSocket</span></div>
+        </div>
+
+        <div class="project-overlay">
+
+            <a href="https://aviro-affordable-verified-intellige.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="AVIRO live demo" title="Live demo">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="projects/aviro.html" aria-label="AVIRO details" title="Project details">
+                <i class="fas fa-circle-info"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="hero-actions">
+    <a href="work.html" class="btn btn-outline">See all projects</a>
+</div>
+
+</section>
+
+</main>
+
 
 <!-- FOOTER -->
+
 <footer class="footer">
 
     <div class="footer-box">
@@ -449,44 +419,38 @@ Technology Stack
             <span class="footer-role">Java Full Stack Developer</span>
         </div>
 
-        <!-- Professional Tagline -->
         <p class="footer-tagline">
             Building scalable solutions, creating meaningful digital experiences,
             and turning ideas into impactful software.
         </p>
 
-        <!-- Gradient Line -->
+        <p class="footer-quote">
+            If it's beautiful, I'll build it. If it's broken, I'll fix it.
+        </p>
+
         <div class="footer-line"></div>
 
-        <!-- Social Icons -->
         <div class="footer-socials">
 
-            <a href="https://linkedin.com" target="_blank">
+            <a href="https://www.linkedin.com/in/sahil-shaikh-004b0b270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
 
-            <a href="https://github.com" target="_blank">
+            <a href="https://github.com/sahilshaikh450" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
 
-            <a href="https://leetcode.com" target="_blank">
+            <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
                 <i class="fas fa-code"></i>
             </a>
 
         </div>
 
-        <!-- Bottom Line -->
         <div class="footer-bottom-line"></div>
 
         <p class="footer-copy">
-            © 2026 Sahil Shaikh. Designed with passion and precision.
+            &copy; 2026 Sahil Shaikh. Designed with passion and precision.
         </p>
-
-<!-- Add this below footer-tagline -->
-
-<p class="footer-quote">
-    If it's beautiful, I'll build it. If it's broken, I'll fix it.
-</p>
 
     </div>
 
@@ -494,8 +458,6 @@ Technology Stack
 
 
 <script src="script.js"></script>
-
-
 
 </body>
 </html>
