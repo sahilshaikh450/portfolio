@@ -194,7 +194,7 @@ function toggleTheme() {
 
     const groups = [
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
-        ".photo-card", ".timeline-item", ".contact-card", ".panel",
+        ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
         ".section-cta", ".footer-box > *"
     ];
 
@@ -286,3 +286,53 @@ document.querySelectorAll(".project-card").forEach(card => {
 
 });
 
+
+
+/* ========================= */
+/* COPY EMAIL */
+/* ========================= */
+
+(function initCopyEmail() {
+
+    const button = document.getElementById("copy-email");
+
+    if (!button) return;
+
+    const label = button.querySelector("span");
+
+    function copied() {
+        button.classList.add("copied");
+        label.textContent = "Copied!";
+        setTimeout(() => {
+            button.classList.remove("copied");
+            label.textContent = "Copy";
+        }, 2000);
+    }
+
+    button.addEventListener("click", () => {
+
+        const email = button.dataset.email;
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(email).then(copied).catch(() => {});
+            return;
+        }
+
+        // fallback for older browsers / non-https
+        const input = document.createElement("textarea");
+        input.value = email;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        try {
+            document.execCommand("copy");
+            copied();
+        } catch (e) {
+            /* copy not supported - email is still visible to select */
+        }
+        input.remove();
+
+    });
+
+})();
