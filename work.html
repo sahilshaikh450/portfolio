@@ -16,7 +16,7 @@
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 
 </head>
 
@@ -63,104 +63,98 @@
 </nav>
 
 
-<main>
+<main class="page">
 
-<section class="work-section">
+<header class="page-header">
+    <span class="eyebrow">Portfolio</span>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Real-world and personal projects &mdash; click any card for full details.</p>
+</header>
 
-<h2 class="work-title">Projects</h2>
+<div class="project-grid">
 
-<p class="work-subtitle">Here are some of my real-world and personal projects.</p>
+    <!-- LIFE OS -->
+    <article class="project-card">
 
-<div class="work-container">
+        <a href="projects/life-os.html" class="project-art" aria-label="LIFE OS details">
+            <span class="project-icon">LO</span>
+            <span class="live-badge">Live</span>
+        </a>
 
-<!-- LIFE OS -->
-
-<div class="work-card">
-
-<div class="work-icon">LO</div>
-
-<div class="work-info">
-
-<h3>LIFE OS <span class="live-badge">Live</span></h3>
-
-<p>Full stack productivity platform with JWT authentication, habit tracking, task management, expense analytics and a modern Spring Boot + React architecture.</p>
-
-<div class="work-links">
-<a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <div class="project-body">
+            <h3>LIFE OS</h3>
+            <p>Habits, tasks and money in one dashboard: streaks, a Kanban-style task engine and an expense analytics map.</p>
+            <div class="project-tags"><span>React</span><span>Spring Boot</span><span>JWT</span></div>
+            <div class="project-links">
+<a href="https://life-os-eight-ashy.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
 <a href="projects/life-os.html"><i class="fas fa-circle-info"></i> Details</a>
-</div>
+            </div>
+        </div>
 
-</div>
+    </article>
 
-</div>
+    <!-- Resume Enhancer -->
+    <article class="project-card">
 
-<!-- Resume Enhancer -->
+        <a href="projects/resume-enhancer.html" class="project-art" aria-label="Resume Enhancer details">
+            <span class="project-icon">RE</span>
+            <span class="live-badge">Live</span>
+        </a>
 
-<div class="work-card">
-
-<div class="work-icon">RE</div>
-
-<div class="work-info">
-
-<h3>Resume Enhancer <span class="live-badge">Live</span></h3>
-
-<p>AI career platform with a resume ATS analyzer, resume enhancer, interview Q&amp;A generator and an AI chatbot coach, built with Next.js, Express.js and Groq Llama 3.</p>
-
-<div class="work-links">
-<a href="https://resume-enhancer-psi.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
-<a href="https://github.com/sahilshaikh450/resume-enhancer" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+        <div class="project-body">
+            <h3>Resume Enhancer</h3>
+            <p>ATS analyzer, AI resume builder, cover letters, interview Q&amp;A and a career-coach chatbot powered by Groq LLMs.</p>
+            <div class="project-tags"><span>Next.js</span><span>Express.js</span><span>Groq AI</span></div>
+            <div class="project-links">
+<a href="https://resume-enhancer-psi.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a href="https://github.com/sahilshaikh450/resume-enhancer" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
 <a href="projects/resume-enhancer.html"><i class="fas fa-circle-info"></i> Details</a>
-</div>
+            </div>
+        </div>
 
-</div>
+    </article>
 
-</div>
+    <!-- AVIRO -->
+    <article class="project-card">
 
-<!-- AVIRO -->
+        <a href="projects/aviro.html" class="project-art" aria-label="AVIRO details">
+            <span class="project-icon">AV</span>
+            <span class="live-badge">Live</span>
+        </a>
 
-<div class="work-card">
-
-<div class="work-icon">AV</div>
-
-<div class="work-info">
-
-<h3>AVIRO <span class="live-badge">Live</span></h3>
-
-<p>Affordable, Verified &amp; Intelligent Ride Organizer: student ride-sharing with AI-powered ID verification, live GPS tracking, WebSocket chat and UPI payments.</p>
-
-<div class="work-links">
-<a href="https://aviro-affordable-verified-intellige.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <div class="project-body">
+            <h3>AVIRO</h3>
+            <p>Affordable, Verified &amp; Intelligent Ride Organizer with ID verification, live GPS tracking, chat and UPI payments.</p>
+            <div class="project-tags"><span>Spring Boot</span><span>React</span><span>WebSocket</span></div>
+            <div class="project-links">
+<a href="https://aviro-affordable-verified-intellige.vercel.app" target="_blank" rel="noopener noreferrer" class="primary"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
 <a href="projects/aviro.html"><i class="fas fa-circle-info"></i> Details</a>
-</div>
+            </div>
+        </div>
 
-</div>
+    </article>
 
-</div>
+    <!-- Portfolio Website -->
+    <article class="project-card">
 
-<!-- Portfolio Website -->
+        <a href="projects/portfolio.html" class="project-art" aria-label="Portfolio Website details">
+            <span class="project-icon">SS</span>
+            
+        </a>
 
-<div class="work-card">
-
-<div class="work-icon">SS</div>
-
-<div class="work-info">
-
-<h3>Portfolio Website</h3>
-
-<p>Modern responsive portfolio built with HTML, CSS and JavaScript, featuring a signature intro animation, light / dark theme and project showcase pages.</p>
-
-<div class="work-links">
-<a href="https://github.com/sahilshaikh450/portfolio" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+        <div class="project-body">
+            <h3>Portfolio Website</h3>
+            <p>Hand-built responsive portfolio with a signature intro, scroll animations, light / dark theme and project pages.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <div class="project-links">
+<a href="https://github.com/sahilshaikh450/portfolio" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
 <a href="projects/portfolio.html"><i class="fas fa-circle-info"></i> Details</a>
-</div>
+            </div>
+        </div>
+
+    </article>
 
 </div>
-
-</div>
-
-</div>
-
-</section>
 
 </main>
 
@@ -217,7 +211,7 @@
 </footer>
 
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>

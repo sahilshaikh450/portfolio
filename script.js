@@ -146,3 +146,105 @@ function toggleTheme() {
     update();
 
 })();
+
+
+/* ========================= */
+/* SCROLL REVEAL */
+/* ========================= */
+
+(function initReveal() {
+
+    const groups = [
+        ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
+        ".photo-card", ".timeline-item", ".contact-card", ".panel",
+        ".section-cta", ".footer-box > *"
+    ];
+
+    const items = document.querySelectorAll(groups.join(","));
+
+    if (!("IntersectionObserver" in window)) return;
+
+    // stagger siblings of the same kind (computed before classes change)
+    const delays = Array.from(items, el => {
+        const siblings = Array.from(el.parentElement.children).filter(c => c.className === el.className);
+        return Math.min(Math.max(siblings.indexOf(el), 0), 6) * 0.08;
+    });
+
+    items.forEach((el, i) => {
+        el.style.setProperty("--delay", delays[i] + "s");
+        el.classList.add("reveal");
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    items.forEach(el => observer.observe(el));
+
+})();
+
+
+/* ========================= */
+/* TYPING ROLE (home hero) */
+/* ========================= */
+
+(function initTyping() {
+
+    const el = document.getElementById("typing");
+
+    if (!el) return;
+
+    const words = JSON.parse(el.dataset.words || "[]");
+
+    if (!words.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let wordIndex = 0;
+    let charIndex = words[0].length;
+    let deleting = true;
+
+    function tick() {
+
+        const word = words[wordIndex];
+
+        charIndex += deleting ? -1 : 1;
+        el.textContent = word.slice(0, charIndex);
+
+        let delay = deleting ? 45 : 85;
+
+        if (!deleting && charIndex === word.length) {
+            deleting = true;
+            delay = 1800;
+        } else if (deleting && charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            delay = 350;
+        }
+
+        setTimeout(tick, delay);
+
+    }
+
+    setTimeout(tick, 2600);
+
+})();
+
+
+/* ========================= */
+/* PROJECT CARD SPOTLIGHT */
+/* ========================= */
+
+document.querySelectorAll(".project-card").forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - rect.left + "px");
+        card.style.setProperty("--my", e.clientY - rect.top + "px");
+    });
+
+});
+
