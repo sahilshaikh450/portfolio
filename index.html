@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 
 </head>
 
@@ -29,23 +29,47 @@
 
 <div id="intro" aria-hidden="true">
 
-<svg viewBox="0 0 500 200" class="signature-svg">
+    <div class="intro-grid"></div>
+    <div class="intro-orb intro-orb-1"></div>
+    <div class="intro-orb intro-orb-2"></div>
 
-<defs>
-<linearGradient id="gradient">
-<stop offset="0%" stop-color="#ff4d6d"/>
-<stop offset="50%" stop-color="#a855f7"/>
-<stop offset="100%" stop-color="#3b82f6"/>
-</linearGradient>
-</defs>
+    <div class="intro-center">
 
-<text x="50" y="120" class="signature-text">Sahil</text>
+        <svg viewBox="0 0 500 220" class="signature-svg">
+            <defs>
+                <linearGradient id="sig-grad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#ff4d6d"/>
+                    <stop offset="50%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#3b82f6"/>
+                </linearGradient>
+            </defs>
+            <text x="250" y="130" text-anchor="middle" class="signature-text">Sahil</text>
+            <path d="M120 168 Q250 208 385 160" class="signature-line"/>
+        </svg>
 
-<path d="M60 150 Q200 190 340 150" class="signature-line"/>
+        <p class="intro-role">
+            <span>Java</span> <span>Full</span> <span>Stack</span> <span>Developer</span>
+        </p>
 
-</svg>
+        <div class="intro-progress"><span></span></div>
+
+    </div>
+
+    <span class="intro-skip">Click anywhere to skip</span>
 
 </div>
+
+<script>
+try {
+    if (sessionStorage.getItem("introShown") || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.getElementById("intro").remove();
+    } else {
+        document.documentElement.classList.add("intro-active");
+    }
+} catch (e) {
+    document.documentElement.classList.add("intro-active");
+}
+</script>
 
 
 <!-- NAVBAR -->
@@ -478,7 +502,7 @@ from secure REST APIs to polished, animated interfaces.
 </footer>
 
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 
 </body>
 </html>
