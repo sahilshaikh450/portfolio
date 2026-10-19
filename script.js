@@ -88,7 +88,7 @@ function toggleTheme() {
         setTimeout(() => intro.remove(), 1000);
     }
 
-    const timer = setTimeout(finish, 3400);
+    const timer = setTimeout(finish, 3800);
 
     intro.addEventListener("click", finish);
     document.addEventListener("keydown", finish);
@@ -273,7 +273,7 @@ function toggleTheme() {
     }
 
     // wait for the intro curtain (if it is playing) before starting
-    const introDelay = document.getElementById("intro") ? 3400 : 0;
+    const introDelay = document.getElementById("intro") ? 3800 : 0;
 
     setTimeout(tick, 2600 + introDelay);
 

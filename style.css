@@ -1746,7 +1746,7 @@ html.intro-active .navbar {
     filter: blur(8px);
 }
 
-/* "Sahil" is written letter by letter: S, then a, then h, i, l */
+/* "Sahil": each letter flies in from a different side, spinning, and lands with a glow burst */
 .intro-name {
     display: flex;
     align-items: baseline;
@@ -1754,30 +1754,57 @@ html.intro-active .navbar {
     font-size: 190px;
     line-height: 1;
     padding: 0 30px;
-    animation: namePulse 2.4s ease-in-out 2s infinite;
+    animation:
+        nameImpact 0.4s ease-out 2.05s,
+        namePulse 2.4s ease-in-out 2.45s infinite;
 }
 
 .intro-name span {
     display: inline-block;
     color: var(--c);
     opacity: 0;
-    /* wipe each letter in from the left like a pen stroke */
-    clip-path: inset(-120px 100% -120px -120px);
-    filter: blur(8px);
-    transform: translateY(16px) scale(0.85);
     text-shadow: 0 0 28px var(--c);
-    animation: letterIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-    animation-delay: calc(0.3s + var(--i) * 0.3s);
+    will-change: transform, opacity, filter;
+    animation: letterFly 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.25s + var(--i) * 0.28s);
 }
 
-@keyframes letterIn {
-    60% { opacity: 1; filter: blur(0); }
-    to {
-        opacity: 1;
-        clip-path: inset(-120px -120px -120px -120px);
-        filter: blur(0);
-        transform: none;
+/* starting point of each letter: S left, a top, h bottom, i top-right, l right */
+.intro-name span:nth-child(1) { --x: -60vw; --y: 0;     --r: -120deg; }
+.intro-name span:nth-child(2) { --x: 0;     --y: -60vh; --r: 90deg;   }
+.intro-name span:nth-child(3) { --x: 0;     --y: 60vh;  --r: -90deg;  }
+.intro-name span:nth-child(4) { --x: 45vw;  --y: -55vh; --r: 160deg;  }
+.intro-name span:nth-child(5) { --x: 60vw;  --y: 0;     --r: 120deg;  }
+
+@keyframes letterFly {
+    0% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(2.4);
+        filter: blur(14px);
     }
+    55% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(0.88);
+        filter: blur(0);
+        text-shadow: 0 0 40px var(--c), 0 0 90px var(--c), 0 0 140px var(--c);
+    }
+    75% {
+        transform: scale(1.08);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+        filter: blur(0);
+        text-shadow: 0 0 28px var(--c);
+    }
+}
+
+/* small shake once the last letter lands */
+@keyframes nameImpact {
+    20% { transform: translate(-4px, 2px); }
+    40% { transform: translate(4px, -2px); }
+    60% { transform: translate(-2px, 1px); }
+    80% { transform: translate(2px, 0); }
 }
 
 @keyframes namePulse {
@@ -1801,7 +1828,7 @@ html.intro-active .navbar {
     stroke-dasharray: 420;
     stroke-dashoffset: 420;
     filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.7));
-    animation: drawLine 0.7s cubic-bezier(0.65, 0, 0.35, 1) 1.8s forwards;
+    animation: drawLine 0.7s cubic-bezier(0.65, 0, 0.35, 1) 2.05s forwards;
 }
 
 @keyframes drawLine {
@@ -1827,9 +1854,9 @@ html.intro-active .navbar {
     animation: wordUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
 
-.intro-role span:nth-child(1) { animation-delay: 2.1s; }
+.intro-role span:nth-child(1) { animation-delay: 2.3s; }
 .intro-role span:nth-child(2) {
-    animation-delay: 2.25s;
+    animation-delay: 2.45s;
     background: linear-gradient(90deg, #a855f7, #ff4da6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1844,7 +1871,7 @@ html.intro-active .navbar {
     text-transform: uppercase;
     color: #94a3b8;
     opacity: 0;
-    animation: wordUp 0.6s ease 2.45s forwards;
+    animation: wordUp 0.6s ease 2.6s forwards;
 }
 
 @keyframes wordUp {
@@ -1867,7 +1894,7 @@ html.intro-active .navbar {
     background: linear-gradient(90deg, #ff4d6d, #a855f7, #3b82f6);
     transform: scaleX(0);
     transform-origin: left;
-    animation: loadBar 3.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: loadBar 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes loadBar {
