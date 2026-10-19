@@ -73,20 +73,26 @@ function toggleTheme() {
 
     if (!intro) return;
 
-    if (readStorage("sessionStorage", "introShown")) {
-        intro.remove();
-        return;
-    }
+    const root = document.documentElement;
+    let finished = false;
 
     writeStorage("sessionStorage", "introShown", "true");
 
-    setTimeout(() => {
+    function finish() {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        document.removeEventListener("keydown", finish);
+        intro.classList.add("intro-exit");
+        // release the hero's entrance animation as the curtain lifts
+        root.classList.remove("intro-active");
+        setTimeout(() => intro.remove(), 1000);
+    }
 
-        intro.classList.add("hide-intro");
+    const timer = setTimeout(finish, 3000);
 
-        setTimeout(() => intro.remove(), 500);
-
-    }, 2400);
+    intro.addEventListener("click", finish);
+    document.addEventListener("keydown", finish);
 
 })();
 
@@ -267,7 +273,10 @@ function toggleTheme() {
 
     }
 
-    setTimeout(tick, 2600);
+    // wait for the intro curtain (if it is playing) before starting
+    const introDelay = document.getElementById("intro") ? 3000 : 0;
+
+    setTimeout(tick, 2600 + introDelay);
 
 })();
 
