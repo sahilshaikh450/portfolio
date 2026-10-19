@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 
 </head>
 
@@ -35,7 +35,9 @@
 
     <div class="intro-center">
 
-        <svg viewBox="0 0 500 220" class="signature-svg">
+        <div class="intro-name" aria-label="Sahil"><span style="--i:0;--c:#ff4d6d">S</span><span style="--i:1;--c:#e2479c">a</span><span style="--i:2;--c:#a855f7">h</span><span style="--i:3;--c:#7c6df6">i</span><span style="--i:4;--c:#3b82f6">l</span></div>
+
+        <svg viewBox="0 0 400 44" class="intro-swoosh" aria-hidden="true">
             <defs>
                 <linearGradient id="sig-grad" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stop-color="#ff4d6d"/>
@@ -43,13 +45,14 @@
                     <stop offset="100%" stop-color="#3b82f6"/>
                 </linearGradient>
             </defs>
-            <text x="250" y="130" text-anchor="middle" class="signature-text">Sahil</text>
-            <path d="M120 168 Q250 208 385 160" class="signature-line"/>
+            <path d="M12 16 Q200 52 388 10"/>
         </svg>
 
         <p class="intro-role">
-            <span>Java</span> <span>Full</span> <span>Stack</span> <span>Developer</span>
+            <span>Software</span> <span>Engineer</span>
         </p>
+
+        <p class="intro-sub">Java &middot; Spring Boot &middot; React</p>
 
         <div class="intro-progress"><span></span></div>
 
@@ -60,8 +63,13 @@
 </div>
 
 <script>
+// play on first load and on every refresh; skip when coming from another page of this site
 try {
-    if (sessionStorage.getItem("introShown") || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var navEntry = performance.getEntriesByType("navigation")[0];
+    var isReload = navEntry && navEntry.type === "reload";
+    var fromSite = document.referrer && location.origin !== "null" &&
+        new URL(document.referrer).origin === location.origin;
+    if ((fromSite && !isReload) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
         document.getElementById("intro").remove();
     } else {
         document.documentElement.classList.add("intro-active");
@@ -125,11 +133,11 @@ try {
 
 <section class="hero">
 
-<span class="hero-badge"><span class="dot"></span> Open to Software Developer roles</span>
+<span class="hero-badge"><span class="dot"></span> Open to Software Engineer roles</span>
 
 <h1>Hi, I'm Sahil Shaikh <span class="wave">👋</span></h1>
 
-<h2 class="gradient-text"><span id="typing" data-words='["Java Full Stack Developer", "Spring Boot + React Engineer", "AI Product Builder", "MCA Student @ MIT-WPU"]'>Java Full Stack Developer</span><span class="typing-caret" aria-hidden="true"></span></h2>
+<h2 class="gradient-text"><span id="typing" data-words='["Software Engineer", "Java Full Stack Developer", "Spring Boot + React Engineer", "AI Product Builder", "MCA Student @ MIT-WPU"]'>Software Engineer</span><span class="typing-caret" aria-hidden="true"></span></h2>
 
 <p class="desc">
 Motivated MCA student building full stack products with Java, Spring Boot and React &mdash;
@@ -502,7 +510,7 @@ from secure REST APIs to polished, animated interfaces.
 </footer>
 
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 
 </body>
 </html>
