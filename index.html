@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 
 </head>
 
@@ -72,7 +72,7 @@ try {
     if ((fromSite && !isReload) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
         document.getElementById("intro").remove();
     } else {
-        document.documentElement.classList.add("intro-active");
+        document.documentElement.classList.add("intro-active", "intro-wait");
     }
 } catch (e) {
     document.documentElement.classList.add("intro-active");
@@ -509,7 +509,7 @@ from secure REST APIs to polished, animated interfaces.
 </footer>
 
 
-<script src="script.js?v=9"></script>
+<script src="script.js?v=10"></script>
 
 </body>
 </html>

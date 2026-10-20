@@ -75,20 +75,32 @@ function toggleTheme() {
 
     const root = document.documentElement;
     let finished = false;
-
+    let timer;
 
     function finish() {
         if (finished) return;
         finished = true;
         clearTimeout(timer);
         document.removeEventListener("keydown", finish);
+        root.classList.remove("intro-wait");
         intro.classList.add("intro-exit");
         // release the hero's entrance animation as the curtain lifts
         root.classList.remove("intro-active");
-        setTimeout(() => intro.remove(), 1000);
+        setTimeout(() => intro.remove(), 1100);
     }
 
-    const timer = setTimeout(finish, 3800);
+    function start() {
+        if (finished || timer) return;
+        root.classList.remove("intro-wait");
+        timer = setTimeout(finish, 3500);
+    }
+
+    // wait for the signature font (max 1s) so letters don't swap font mid-animation
+    const fontReady = document.fonts && document.fonts.load
+        ? document.fonts.load("190px Allura")
+        : Promise.resolve();
+
+    Promise.race([fontReady, new Promise(r => setTimeout(r, 1000))]).then(start, start);
 
     intro.addEventListener("click", finish);
     document.addEventListener("keydown", finish);

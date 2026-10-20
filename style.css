@@ -535,8 +535,9 @@ ul {
 }
 
 .tech-track {
+    --tech-gap: 30px;
     display: flex;
-    gap: 30px;
+    gap: var(--tech-gap);
     width: max-content;
     animation: scrollTech 25s linear infinite;
 }
@@ -552,7 +553,7 @@ ul {
 @keyframes scrollTech {
     from { transform: translateX(0); }
     /* track holds the list twice; shift by half incl. half a gap */
-    to   { transform: translateX(calc(-50% - 15px)); }
+    to   { transform: translateX(calc(-50% - var(--tech-gap) / 2)); }
 }
 
 .tech-card {
@@ -1656,7 +1657,7 @@ html.intro-active .navbar {
     overflow: hidden;
     cursor: pointer;
     background: #07070c;
-    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* glowing edge that trails the curtain as it lifts */
@@ -1737,16 +1738,23 @@ html.intro-active .navbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.5s ease, filter 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.6s ease;
 }
 
 #intro.intro-exit .intro-center {
-    transform: scale(1.15) translateY(-30px);
+    transform: scale(1.06) translateY(-24px);
     opacity: 0;
-    filter: blur(8px);
 }
 
-/* "Sahil": each letter flies in from a different side, spinning, and lands with a glow burst */
+/* hold every intro animation until the signature font has loaded */
+html.intro-wait #intro *,
+html.intro-wait #intro *::before,
+html.intro-wait #intro *::after {
+    animation-play-state: paused !important;
+}
+
+/* "Sahil": each letter glides in from a different side and settles softly.
+   Only transform + opacity are animated so it stays smooth on phones. */
 .intro-name {
     display: flex;
     align-items: baseline;
@@ -1754,62 +1762,37 @@ html.intro-active .navbar {
     font-size: 190px;
     line-height: 1;
     padding: 0 30px;
-    animation:
-        nameImpact 0.4s ease-out 2.05s,
-        namePulse 2.4s ease-in-out 2.45s infinite;
 }
 
 .intro-name span {
     display: inline-block;
     color: var(--c);
     opacity: 0;
-    text-shadow: 0 0 28px var(--c);
-    will-change: transform, opacity, filter;
-    animation: letterFly 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: calc(0.25s + var(--i) * 0.28s);
+    text-shadow: 0 0 24px var(--c);
+    will-change: transform, opacity;
+    animation: letterGlide 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.25s + var(--i) * 0.2s);
 }
 
 /* starting point of each letter: S left, a top, h bottom, i top-right, l right */
-.intro-name span:nth-child(1) { --x: -60vw; --y: 0;     --r: -120deg; }
-.intro-name span:nth-child(2) { --x: 0;     --y: -60vh; --r: 90deg;   }
-.intro-name span:nth-child(3) { --x: 0;     --y: 60vh;  --r: -90deg;  }
-.intro-name span:nth-child(4) { --x: 45vw;  --y: -55vh; --r: 160deg;  }
-.intro-name span:nth-child(5) { --x: 60vw;  --y: 0;     --r: 120deg;  }
+.intro-name span:nth-child(1) { --x: -28vw; --y: 0;     --r: -24deg; }
+.intro-name span:nth-child(2) { --x: 0;     --y: -30vh; --r: 18deg;  }
+.intro-name span:nth-child(3) { --x: 0;     --y: 30vh;  --r: -18deg; }
+.intro-name span:nth-child(4) { --x: 22vw;  --y: -26vh; --r: 30deg;  }
+.intro-name span:nth-child(5) { --x: 28vw;  --y: 0;     --r: 24deg;  }
 
-@keyframes letterFly {
+@keyframes letterGlide {
     0% {
         opacity: 0;
-        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(2.4);
-        filter: blur(14px);
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.35);
     }
-    55% {
+    45% {
         opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(0.88);
-        filter: blur(0);
-        text-shadow: 0 0 40px var(--c), 0 0 90px var(--c), 0 0 140px var(--c);
-    }
-    75% {
-        transform: scale(1.08);
     }
     100% {
         opacity: 1;
         transform: none;
-        filter: blur(0);
-        text-shadow: 0 0 28px var(--c);
     }
-}
-
-/* small shake once the last letter lands */
-@keyframes nameImpact {
-    20% { transform: translate(-4px, 2px); }
-    40% { transform: translate(4px, -2px); }
-    60% { transform: translate(-2px, 1px); }
-    80% { transform: translate(2px, 0); }
-}
-
-@keyframes namePulse {
-    0%, 100% { filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.35)); }
-    50%      { filter: drop-shadow(0 0 22px rgba(255, 77, 109, 0.6)); }
 }
 
 .intro-swoosh {
@@ -1828,7 +1811,7 @@ html.intro-active .navbar {
     stroke-dasharray: 420;
     stroke-dashoffset: 420;
     filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.7));
-    animation: drawLine 0.7s cubic-bezier(0.65, 0, 0.35, 1) 2.05s forwards;
+    animation: drawLine 0.9s cubic-bezier(0.65, 0, 0.35, 1) 1.7s forwards;
 }
 
 @keyframes drawLine {
@@ -1851,12 +1834,12 @@ html.intro-active .navbar {
     display: inline-block;
     opacity: 0;
     transform: translateY(18px);
-    animation: wordUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    animation: wordUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.intro-role span:nth-child(1) { animation-delay: 2.3s; }
+.intro-role span:nth-child(1) { animation-delay: 1.9s; }
 .intro-role span:nth-child(2) {
-    animation-delay: 2.45s;
+    animation-delay: 2.05s;
     background: linear-gradient(90deg, #a855f7, #ff4da6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1871,7 +1854,7 @@ html.intro-active .navbar {
     text-transform: uppercase;
     color: #94a3b8;
     opacity: 0;
-    animation: wordUp 0.6s ease 2.6s forwards;
+    animation: wordUp 0.7s ease 2.25s forwards;
 }
 
 @keyframes wordUp {
@@ -1894,7 +1877,7 @@ html.intro-active .navbar {
     background: linear-gradient(90deg, #ff4d6d, #a855f7, #3b82f6);
     transform: scaleX(0);
     transform-origin: left;
-    animation: loadBar 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: loadBar 3.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes loadBar {
@@ -2356,6 +2339,583 @@ body.light-mode .footer-cta {
     .reveal {
         opacity: 1;
         transform: none;
+    }
+
+}
+
+
+/* ========================= */
+/* COMPACT MOBILE UI (phones only) */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 12px;
+    }
+
+    /* navbar */
+    .navbar {
+        padding: 8px 10px 8px 16px;
+        border-radius: 16px;
+    }
+
+    .signature {
+        font-size: 26px;
+    }
+
+    .menu-toggle,
+    .theme-toggle {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+    }
+
+    .theme-toggle {
+        font-size: 15px;
+    }
+
+    .nav-links a {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    /* hero */
+    .hero {
+        margin: 48px auto 36px;
+    }
+
+    .hero-badge {
+        padding: 5px 12px;
+        margin-bottom: 16px;
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+        letter-spacing: -0.8px;
+    }
+
+    .hero .gradient-text {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    .desc {
+        font-size: 14.5px;
+        line-height: 1.6;
+    }
+
+    .hero-actions {
+        width: 100%;
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .hero-actions .btn,
+    .section-cta .btn {
+        white-space: nowrap;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .hero-actions .btn {
+        flex: 1 1 0;
+        width: auto;
+    }
+
+    /* section headers */
+    .page {
+        margin: 40px auto;
+    }
+
+    .page-header {
+        margin-bottom: 26px;
+    }
+
+    .eyebrow {
+        margin-bottom: 8px;
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .page-subtitle {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    /* tech stack */
+    .tech-section {
+        margin: 36px auto 20px;
+    }
+
+    .tech-category {
+        margin: 18px 0 8px;
+        font-size: 14px;
+    }
+
+    .tech-track {
+        --tech-gap: 12px;
+    }
+
+    .tech-card {
+        min-width: 92px;
+        padding: 12px 8px;
+        border-radius: 12px;
+    }
+
+    .tech-card i {
+        font-size: 28px;
+    }
+
+    .tech-card span {
+        margin-top: 8px;
+        font-size: 12px;
+    }
+
+    /* project cards */
+    .project-grid {
+        gap: 16px;
+    }
+
+    .project-card {
+        border-radius: 18px;
+    }
+
+    .project-art {
+        height: 96px;
+    }
+
+    .project-icon {
+        font-size: 38px;
+    }
+
+    .project-art .live-badge {
+        top: 10px;
+        left: 10px;
+    }
+
+    .live-badge {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+
+    .project-body {
+        padding: 16px;
+    }
+
+    .project-body h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .project-body p {
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .project-tags {
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .project-tags span {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    .project-links {
+        gap: 8px;
+    }
+
+    .project-links a {
+        padding: 8px 10px;
+        font-size: 13px;
+        border-radius: 9px;
+    }
+
+    .section-cta {
+        margin-top: 26px;
+    }
+
+    /* project detail pages */
+    .project-hero {
+        margin-bottom: 24px;
+    }
+
+    .project-title {
+        font-size: 30px;
+    }
+
+    .project-tagline {
+        font-size: 15px;
+    }
+
+    .project-hero .project-links {
+        margin-top: 18px;
+    }
+
+    .detail-grid {
+        gap: 14px;
+        margin-bottom: 14px;
+    }
+
+    .panel {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .panel h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .panel p,
+    .feature-list li {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .feature-list {
+        gap: 8px;
+    }
+
+    .tech-stack {
+        gap: 8px;
+    }
+
+    .tech-stack span {
+        padding: 6px 10px;
+        font-size: 12.5px;
+    }
+
+    .back-link {
+        margin-top: 36px;
+    }
+
+    /* about */
+    .about-grid {
+        gap: 18px;
+    }
+
+    .about-left {
+        max-width: 300px;
+        gap: 12px;
+    }
+
+    .photo-card {
+        border-radius: 22px;
+    }
+
+    .photo-card img {
+        border-radius: 19px;
+    }
+
+    .location-badge {
+        bottom: 12px;
+        padding: 6px 14px;
+        font-size: 12.5px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat {
+        padding: 10px 6px;
+        border-radius: 12px;
+    }
+
+    .stat strong {
+        font-size: 18px;
+    }
+
+    .stat span {
+        display: block;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .about-right {
+        gap: 14px;
+    }
+
+    .info-card {
+        flex-direction: row;
+        gap: 12px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .info-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+    .info-card h3 {
+        font-size: 11px;
+        letter-spacing: 2.5px;
+    }
+
+    .info-card p {
+        font-size: 14.5px;
+        line-height: 1.7;
+    }
+
+    .chip-row {
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    .chip {
+        padding: 6px 10px;
+        font-size: 12.5px;
+    }
+
+    /* timeline */
+    .timeline-item {
+        margin-bottom: 30px;
+    }
+
+    .timeline-date {
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+
+    .timeline-content {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .timeline-content h3 {
+        font-size: 16px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+
+    /* contact */
+    .contact-layout {
+        gap: 14px;
+    }
+
+    .contact-main {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+
+    .contact-main .hero-badge {
+        margin-bottom: 14px;
+    }
+
+    .contact-main h2 {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .contact-main p {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .email-box {
+        padding: 12px;
+        margin-bottom: 14px;
+        font-size: 14px;
+    }
+
+    .contact-actions {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .contact-meta {
+        font-size: 13px;
+    }
+
+    .contact-links {
+        gap: 10px;
+    }
+
+    .contact-row {
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+    .contact-row-text strong {
+        font-size: 15px;
+    }
+
+    .contact-text {
+        font-size: 13px;
+    }
+
+    /* footer */
+    .footer {
+        margin-top: 40px;
+    }
+
+    .footer::before {
+        margin-bottom: 32px;
+    }
+
+    .footer-cta {
+        gap: 14px;
+        padding: 20px 18px;
+        margin-bottom: 40px;
+        border-radius: 18px;
+    }
+
+    .footer-cta h2 {
+        font-size: 18px;
+    }
+
+    .footer-cta p {
+        font-size: 13.5px;
+    }
+
+    .footer-quote {
+        margin-bottom: 36px;
+    }
+
+    .quote-mark {
+        height: 38px;
+        font-size: 76px;
+    }
+
+    .footer-quote p {
+        font-size: 22px;
+    }
+
+    .footer-quote cite {
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .footer-grid {
+        gap: 22px 16px;
+        padding: 24px 0;
+    }
+
+    .footer-signature {
+        font-size: 42px;
+    }
+
+    .footer-role {
+        margin: 6px 0 8px;
+        font-size: 15px;
+    }
+
+    .footer-tagline {
+        font-size: 14px;
+    }
+
+    .footer-col h3 {
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+
+    .footer-col ul {
+        gap: 8px;
+    }
+
+    .footer-col ul a {
+        font-size: 14px;
+    }
+
+    .footer-email {
+        margin-bottom: 14px;
+        font-size: 13.5px;
+    }
+
+    .footer-socials {
+        gap: 10px;
+    }
+
+    .footer-socials a {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    .footer-bottom {
+        padding-top: 18px;
+        font-size: 12.5px;
+    }
+
+    .back-to-top {
+        padding: 6px 12px;
+    }
+
+    /* intro */
+    .intro-name {
+        font-size: 130px;
+    }
+
+    .intro-swoosh {
+        width: 240px;
+    }
+
+    .intro-role {
+        margin-top: 12px;
+        font-size: 14px;
+        letter-spacing: 5px;
+    }
+
+    .intro-progress {
+        width: 140px;
+        margin-top: 22px;
+    }
+
+    .intro-orb {
+        filter: blur(60px);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .page-title {
+        font-size: 26px;
+    }
+
+    .footer-quote p {
+        font-size: 20px;
+    }
+
+    .intro-name {
+        font-size: 108px;
+    }
+
+    .intro-role {
+        font-size: 13px;
+        letter-spacing: 4px;
     }
 
 }
