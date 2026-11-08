@@ -509,80 +509,279 @@ ul {
 }
 
 /* ========================= */
-/* TECH SECTION */
+/* TECH STACK (skill cards) */
 /* ========================= */
 
-.tech-section {
-    max-width: 1000px;
-    margin: 80px auto 40px;
-    padding: 20px;
-    text-align: center;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
-.tech-category {
-    margin: 30px 0 15px;
-    color: var(--muted);
-    font-weight: 600;
-}
-
-.tech-scroll {
-    width: 100%;
-    overflow: hidden;
+.skill-group {
     position: relative;
-    padding: 10px 0;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.tech-track {
-    --tech-gap: 30px;
-    display: flex;
-    gap: var(--tech-gap);
-    width: max-content;
-    animation: scrollTech 25s linear infinite;
-}
-
-.tech-scroll.reverse .tech-track {
-    animation-direction: reverse;
-}
-
-.tech-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scrollTech {
-    from { transform: translateX(0); }
-    /* track holds the list twice; shift by half incl. half a gap */
-    to   { transform: translateX(calc(-50% - var(--tech-gap) / 2)); }
-}
-
-.tech-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 150px;
-    flex-shrink: 0;
-    padding: 20px;
+    overflow: hidden;
+    padding: 24px;
+    border-radius: 22px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 15px;
-    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.tech-card:hover {
+/* light sweep across the card when it scrolls into view */
+.skill-group::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+    transform: skewX(-12deg);
+}
+
+.skill-group.visible::after {
+    animation: cardSweep 1.2s var(--ease) calc(0.3s + var(--g) * 0.08s) both;
+}
+
+@keyframes cardSweep {
+    to { left: 130%; }
+}
+
+.skill-group:hover {
     transform: translateY(-6px);
-    border-color: rgba(168, 85, 247, 0.35);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 20px 45px rgba(168, 85, 247, 0.14);
 }
 
-.tech-card i {
-    font-size: 40px;
+.skill-group header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
 }
 
-.tech-card span {
-    margin-top: 12px;
+.skill-group-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: #ffffff;
+    background: var(--grad-soft);
+    transition: transform 0.4s var(--ease);
+}
+
+.skill-group:hover .skill-group-icon {
+    transform: rotate(-10deg) scale(1.08);
+}
+
+.skill-group h3 {
+    flex: 1;
+    font-size: 17px;
+}
+
+.skill-count {
+    min-width: 28px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: #c4b5fd;
+    background: rgba(139, 92, 246, 0.14);
+}
+
+.skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-chips li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-soft);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    transition: transform 0.25s var(--ease), border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.skill-chips li i {
+    font-size: 17px;
+}
+
+.skill-chips li .fas {
+    color: #a78bfa;
+    font-size: 14px;
+}
+
+.skill-chips li:hover {
+    transform: translateY(-3px);
+    color: var(--text);
+    border-color: rgba(168, 85, 247, 0.45);
+    background: rgba(168, 85, 247, 0.1);
+}
+
+/* chips pop in one by one after their card appears */
+.skill-group.reveal:not(.visible) .skill-chips li {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+}
+
+.skill-group.visible .skill-chips li {
+    animation: chipPop 0.5s var(--ease) both;
+    animation-delay: calc(0.25s + var(--g) * 0.08s + var(--i) * 0.06s);
+}
+
+@keyframes chipPop {
+    from { opacity: 0; transform: translateY(10px) scale(0.85); }
+}
+
+/* ========================= */
+/* ACHIEVEMENTS + CERTIFICATIONS */
+/* ========================= */
+
+.achieve-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.achieve-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px;
+    border-radius: 22px;
+    text-decoration: none;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.16), transparent 55%),
+        var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.achieve-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 77, 109, 0.4);
+    box-shadow: 0 20px 45px rgba(255, 77, 109, 0.12);
+}
+
+.achieve-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 18px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    background: var(--grad-soft);
+}
+
+.achieve-number {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.achieve-number sup {
+    font-size: 0.45em;
+    vertical-align: super;
+}
+
+.achieve-card h3 {
+    margin: 12px 0 6px;
+    font-size: 17px;
+}
+
+.achieve-card p {
     color: var(--muted);
     font-size: 14px;
+    line-height: 1.6;
+}
+
+.cert-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.cert-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.35s var(--ease), border-color 0.35s ease;
+}
+
+.cert-row:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 172, 254, 0.4);
+}
+
+.cert-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    color: #a78bfa;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.cert-row > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.cert-row h3 {
+    font-size: 15px;
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+
+.cert-row p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.cert-seal {
+    color: rgba(168, 85, 247, 0.35);
+    font-size: 18px;
+    transition: transform 0.6s var(--ease), color 0.3s ease;
+}
+
+.cert-row:hover .cert-seal {
+    color: #a78bfa;
+    transform: rotate(180deg);
 }
 
 /* ========================= */
@@ -1934,7 +2133,9 @@ body.light-mode .menu-toggle span {
 }
 
 body.light-mode .project-card,
-body.light-mode .tech-card,
+body.light-mode .skill-group,
+body.light-mode .achieve-card,
+body.light-mode .cert-row,
 body.light-mode .panel,
 body.light-mode .info-card,
 body.light-mode .stat,
@@ -1947,6 +2148,7 @@ body.light-mode .contact-row {
 
 body.light-mode .project-links a,
 body.light-mode .tech-stack span,
+body.light-mode .skill-chips li,
 body.light-mode .chip,
 body.light-mode .email-box,
 body.light-mode .btn-outline {
@@ -1996,6 +2198,12 @@ body.light-mode .footer-cta {
 /* ========================= */
 
 @media (max-width: 1024px) {
+
+    .skills-grid,
+    .achieve-grid,
+    .cert-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .about-grid {
         grid-template-columns: 1fr;
@@ -2125,10 +2333,6 @@ body.light-mode .footer-cta {
         font-size: 16px;
     }
 
-    .tech-section {
-        padding: 0;
-    }
-
     .page {
         margin: 60px auto;
         padding: 0;
@@ -2237,10 +2441,6 @@ body.light-mode .footer-cta {
         padding: 22px;
     }
 
-    .tech-section {
-        margin-top: 50px;
-    }
-
     .contact-main {
         padding: 26px 22px;
     }
@@ -2265,13 +2465,14 @@ body.light-mode .footer-cta {
 
 @media (max-width: 480px) {
 
-    .hero h1 {
-        font-size: 32px;
+    .skills-grid,
+    .achieve-grid,
+    .cert-list {
+        grid-template-columns: 1fr;
     }
 
-    .tech-card {
-        min-width: 120px;
-        padding: 16px;
+    .hero h1 {
+        font-size: 32px;
     }
 
     .project-grid {
@@ -2458,33 +2659,73 @@ body.light-mode .footer-cta {
         font-size: 14px;
     }
 
-    /* tech stack */
-    .tech-section {
-        margin: 36px auto 20px;
+    /* tech stack, achievements, certifications */
+    .skills-grid,
+    .achieve-grid {
+        gap: 14px;
     }
 
-    .tech-category {
-        margin: 18px 0 8px;
+    .skill-group,
+    .achieve-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .skill-group header {
+        margin-bottom: 14px;
+    }
+
+    .skill-group-icon,
+    .achieve-icon,
+    .cert-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        font-size: 15px;
+    }
+
+    .skill-group h3,
+    .achieve-card h3 {
+        font-size: 16px;
+    }
+
+    .skill-chips {
+        gap: 6px;
+    }
+
+    .skill-chips li {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .skill-chips li i {
+        font-size: 15px;
+    }
+
+    .achieve-icon {
+        margin-bottom: 12px;
+    }
+
+    .achieve-number {
+        font-size: 36px;
+    }
+
+    .achieve-card p {
+        font-size: 13.5px;
+    }
+
+    .cert-list {
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+    .cert-row {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .cert-row h3 {
         font-size: 14px;
-    }
-
-    .tech-track {
-        --tech-gap: 12px;
-    }
-
-    .tech-card {
-        min-width: 92px;
-        padding: 12px 8px;
-        border-radius: 12px;
-    }
-
-    .tech-card i {
-        font-size: 28px;
-    }
-
-    .tech-card span {
-        margin-top: 8px;
-        font-size: 12px;
     }
 
     /* project cards */
