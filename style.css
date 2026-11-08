@@ -509,207 +509,284 @@ ul {
 }
 
 /* ========================= */
-/* TECH STACK (skill cards) */
+/* TECH STACK (orbit) */
 /* ========================= */
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-@property --spin {
-    syntax: "<angle>";
-    inherits: false;
-    initial-value: 0deg;
-}
-
-.skill-group {
-    --a: #a855f7;
-    --a2: #ec4899;
-    --mx: 50%;
-    --my: -30%;
-    --rx: 0deg;
-    --ry: 0deg;
+/* Section styled like the landing intro: dark, faint grid, drifting purple / blue orbs */
+.tech-section {
     position: relative;
-    overflow: hidden;
     isolation: isolate;
-    padding: 24px;
-    border-radius: 22px;
-    /* accent glow that follows the mouse */
-    background:
-        radial-gradient(320px circle at var(--mx) var(--my), color-mix(in srgb, var(--a) 16%, transparent), transparent 65%),
-        linear-gradient(160deg, color-mix(in srgb, var(--a) 7%, transparent), transparent 45%),
-        var(--surface);
-    border: 1px solid var(--border);
-    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
-    transition:
-        opacity 0.8s var(--ease) var(--delay, 0s),
-        transform 0.5s var(--ease),
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
 }
 
-/* keep the tilt working after the scroll-reveal has finished */
-.skill-group.reveal.visible {
-    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+.tech-backdrop {
+    position: absolute;
+    inset: -40px -10vw;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-/* rotating accent border, shown on hover */
-.skill-group::before {
+.tech-backdrop::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
-    padding: 1.5px;
-    border-radius: inherit;
-    background: conic-gradient(from var(--spin), transparent 0deg, var(--a) 70deg, var(--a2) 140deg, transparent 210deg);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: borderSpin 3.5s linear infinite;
-    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(168, 85, 247, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 10%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, #000 10%, transparent 70%);
 }
 
-@keyframes borderSpin {
-    to { --spin: 360deg; }
+.tech-orb {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    animation: orbDrift 9s ease-in-out infinite alternate;
 }
 
-/* light sweep across the card when it scrolls into view */
-.skill-group::after {
+.tech-orb-1 {
+    top: 10%;
+    left: 8%;
+    background: rgba(168, 85, 247, 0.45);
+}
+
+.tech-orb-2 {
+    right: 8%;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.35);
+    animation-delay: -4s;
+}
+
+/* ---------- orbit: skills circling a glowing core ---------- */
+.orbit-stage {
+    --s: min(640px, 92vw);
+    --tile: 50px;
+    position: relative;
+    width: var(--s);
+    height: var(--s);
+    margin: 10px auto 0;
+}
+
+.orbit-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--s) * 0.2);
+    height: calc(var(--s) * 0.2);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.08), transparent 60%),
+        rgba(13, 13, 22, 0.85);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow:
+        0 0 40px rgba(168, 85, 247, 0.35),
+        inset 0 0 30px rgba(168, 85, 247, 0.18);
+    animation: corePulse 4s ease-in-out infinite;
+}
+
+/* gradient halo behind the core */
+.orbit-core::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: -60%;
-    width: 40%;
-    height: 100%;
+    inset: -14px;
+    z-index: -1;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #ff4d6d, #a855f7, #3b82f6, #ff4d6d);
+    filter: blur(18px);
+    opacity: 0.55;
+    animation: spin 8s linear infinite;
+}
+
+@keyframes corePulse {
+    50% { box-shadow: 0 0 70px rgba(255, 77, 109, 0.45), inset 0 0 40px rgba(168, 85, 247, 0.25); }
+}
+
+.orbit-core-name {
+    font-family: 'Allura', cursive;
+    font-size: calc(var(--s) * 0.07);
+    line-height: 1;
+    background: linear-gradient(90deg, #ff4d6d, #a855f7, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
+}
+
+.orbit-core-sub {
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #cbd5e1;
+}
+
+.orbit-ring {
+    --r: calc(var(--s) * 0.19);
+    --dur: 34s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--r) * 2);
+    height: calc(var(--r) * 2);
+    margin: calc(var(--r) * -1) 0 0 calc(var(--r) * -1);
+    border-radius: 50%;
+    border: 1px dashed rgba(168, 85, 247, 0.22);
     pointer-events: none;
-    background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.07), transparent);
-    transform: skewX(-12deg);
+    animation: spin var(--dur) linear infinite;
 }
 
-.skill-group.visible::after {
-    animation: cardSweep 1.2s var(--ease) calc(0.3s + var(--g) * 0.08s) both;
+.orbit-ring-2 {
+    --r: calc(var(--s) * 0.33);
+    --dur: 48s;
+    border-color: rgba(59, 130, 246, 0.2);
+    animation-direction: reverse;
 }
 
-@keyframes cardSweep {
-    to { left: 130%; }
+.orbit-ring-3 {
+    --r: calc(var(--s) * 0.47);
+    --dur: 64s;
+    border-color: rgba(255, 77, 109, 0.16);
 }
 
-.skill-group:hover {
-    border-color: transparent;
-    box-shadow: 0 22px 50px color-mix(in srgb, var(--a) 22%, transparent);
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
-.skill-group:hover::before {
-    opacity: 1;
+/* place each logo on its ring, evenly spaced */
+.orbit-ring li {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: rotate(calc(360deg / var(--n) * var(--k))) translateX(var(--r)) rotate(calc(-360deg / var(--n) * var(--k)));
 }
 
-.skill-group header {
+/* counter-spin so logos and names stay upright while the ring turns */
+.orbit-item {
+    position: absolute;
+    left: calc(var(--tile) / -2);
+    top: calc(var(--tile) / -2);
+    width: var(--tile);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
+    pointer-events: auto;
+    animation: spin var(--dur) linear infinite reverse;
 }
 
-.skill-group-icon {
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
+.orbit-ring-2 .orbit-item {
+    animation-direction: normal;
+}
+
+.orbit-tile {
+    width: var(--tile);
+    height: var(--tile);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
-    color: #ffffff;
-    background: linear-gradient(135deg, var(--a), var(--a2));
-    box-shadow: 0 8px 22px color-mix(in srgb, var(--a) 40%, transparent);
-    transition: transform 0.4s var(--ease);
+    border-radius: 15px;
+    font-size: calc(var(--tile) * 0.46);
+    color: #ede9fe;
+    background: rgba(16, 16, 28, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    cursor: default;
+    transition: transform 0.35s var(--ease), background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.skill-group:hover .skill-group-icon {
-    transform: rotate(-10deg) scale(1.1);
+.orbit-tile .fas {
+    font-size: calc(var(--tile) * 0.36);
 }
 
-.skill-group h3 {
-    flex: 1;
-    font-size: 17px;
+.orbit-label {
+    margin-top: 6px;
     white-space: nowrap;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.3s ease;
 }
 
-.skill-count {
-    min-width: 28px;
-    padding: 2px 9px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    text-align: center;
-    color: var(--a);
-    background: color-mix(in srgb, var(--a) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--a) 30%, transparent);
+/* hovering a logo pauses its ring and lights the logo up */
+.orbit-ring:hover,
+.orbit-ring:hover .orbit-item {
+    animation-play-state: paused;
 }
 
-.skill-chips {
+.orbit-item:hover .orbit-tile {
+    transform: scale(1.18);
+    color: #ffffff;
+    border-color: transparent;
+    background: linear-gradient(135deg, #ff4d6d, #a855f7, #3b82f6);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.55);
+    text-shadow: none;
+}
+
+.orbit-item:hover .orbit-label {
+    color: var(--text);
+}
+
+/* rings burst out from the core when the section scrolls into view */
+.orbit-stage.reveal:not(.visible) .orbit-ring,
+.orbit-stage.reveal:not(.visible) .orbit-core {
+    opacity: 0;
+}
+
+.orbit-stage.visible .orbit-ring {
+    animation:
+        ringIn 1.1s var(--ease) both,
+        spin var(--dur) linear infinite;
+}
+
+.orbit-stage.visible .orbit-ring-2 { animation-delay: 0.15s, 0s; animation-direction: normal, reverse; }
+.orbit-stage.visible .orbit-ring-3 { animation-delay: 0.3s, 0s; }
+
+@keyframes ringIn {
+    from { opacity: 0; scale: 0.3; }
+}
+
+.orbit-stage.visible .orbit-core {
+    animation: coreIn 0.8s var(--ease) both, corePulse 4s ease-in-out 0.8s infinite;
+}
+
+@keyframes coreIn {
+    from { opacity: 0; scale: 0.4; }
+}
+
+.skill-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 26px;
 }
 
-.skill-chips li {
+.skill-legend span {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px 6px 7px;
-    border-radius: 10px;
-    font-size: 14px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
     color: var(--text-soft);
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border);
-    transition: transform 0.25s var(--ease), border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* every chip icon sits on a small tile so dark logos (Java, MySQL, C) stay visible */
-.skill-chips li i {
-    width: 24px;
-    height: 24px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border-radius: 7px;
-    font-size: 15px;
-    background: #f4f4f8;
-}
-
-.skill-chips li .fas {
-    font-size: 12px;
-    color: #ffffff;
-    background: linear-gradient(135deg, var(--a), var(--a2));
-}
-
-.skill-chips li:hover {
-    transform: translateY(-3px);
-    color: var(--text);
-    border-color: color-mix(in srgb, var(--a) 60%, transparent);
-    background: color-mix(in srgb, var(--a) 12%, transparent);
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--a) 25%, transparent);
-}
-
-/* chips pop in one by one after their card appears */
-.skill-group.reveal:not(.visible) .skill-chips li {
-    opacity: 0;
-    transform: translateY(10px) scale(0.85);
-}
-
-.skill-group.visible .skill-chips li {
-    animation: chipPop 0.5s var(--ease) both;
-    animation-delay: calc(0.25s + var(--g) * 0.08s + var(--i) * 0.06s);
-}
-
-@keyframes chipPop {
-    from { opacity: 0; transform: translateY(10px) scale(0.85); }
+.skill-legend i {
+    color: #a78bfa;
 }
 
 /* ========================= */
@@ -2198,8 +2275,18 @@ body.light-mode .menu-toggle span {
     background: #111827;
 }
 
+body.light-mode .orbit-tile,
+body.light-mode .orbit-core {
+    background: #ffffff;
+    color: #5b21b6;
+    text-shadow: none;
+}
+
+body.light-mode .orbit-core-sub {
+    color: #4b5563;
+}
+
 body.light-mode .project-card,
-body.light-mode .skill-group,
 body.light-mode .achieve-card,
 body.light-mode .cert-row,
 body.light-mode .panel,
@@ -2214,7 +2301,6 @@ body.light-mode .contact-row {
 
 body.light-mode .project-links a,
 body.light-mode .tech-stack span,
-body.light-mode .skill-chips li,
 body.light-mode .chip,
 body.light-mode .email-box,
 body.light-mode .btn-outline {
@@ -2265,7 +2351,6 @@ body.light-mode .footer-cta {
 
 @media (max-width: 1024px) {
 
-    .skills-grid,
     .achieve-grid,
     .cert-list {
         grid-template-columns: repeat(2, 1fr);
@@ -2531,7 +2616,6 @@ body.light-mode .footer-cta {
 
 @media (max-width: 480px) {
 
-    .skills-grid,
     .achieve-grid,
     .cert-list {
         grid-template-columns: 1fr;
@@ -2726,22 +2810,15 @@ body.light-mode .footer-cta {
     }
 
     /* tech stack, achievements, certifications */
-    .skills-grid,
     .achieve-grid {
         gap: 14px;
     }
 
-    .skill-group,
     .achieve-card {
         padding: 18px;
         border-radius: 18px;
     }
 
-    .skill-group header {
-        margin-bottom: 14px;
-    }
-
-    .skill-group-icon,
     .achieve-icon,
     .cert-icon {
         width: 38px;
@@ -2750,36 +2827,38 @@ body.light-mode .footer-cta {
         font-size: 15px;
     }
 
-    .skill-group h3,
     .achieve-card h3 {
         font-size: 16px;
     }
 
-    .skill-chips {
+    .orbit-stage {
+        --s: calc(100vw - 48px);
+        --tile: 32px;
+    }
+
+    .orbit-tile {
+        border-radius: 10px;
+    }
+
+    /* names would crowd the rings on a phone; the legend below names the groups */
+    .orbit-label,
+    .orbit-core-sub {
+        display: none;
+    }
+
+    .skill-legend {
         gap: 6px;
     }
 
-    .skill-chips li {
-        padding: 6px 10px;
-        font-size: 13px;
+    .skill-legend span {
+        padding: 5px 10px;
+        font-size: 11.5px;
     }
 
-    .skill-chips li {
-        padding: 5px 10px 5px 6px;
-    }
-
-    .skill-chips li i {
-        width: 21px;
-        height: 21px;
-        font-size: 13px;
-    }
-
-    .skill-chips li .fas {
-        font-size: 11px;
-    }
-
-    .skill-group h3 {
-        white-space: normal;
+    .tech-orb {
+        width: 260px;
+        height: 260px;
+        filter: blur(70px);
     }
 
     .achieve-icon {
