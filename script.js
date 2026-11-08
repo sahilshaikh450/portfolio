@@ -212,7 +212,8 @@ function toggleTheme() {
     const groups = [
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
         ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
-        ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *"
+        ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *",
+        ".skill-group", ".achieve-card", ".cert-row"
     ];
 
     const items = document.querySelectorAll(groups.join(","));
@@ -353,6 +354,49 @@ document.querySelectorAll(".project-card").forEach(card => {
         }
         input.remove();
 
+    });
+
+})();
+
+
+/* ========================= */
+/* COUNT-UP NUMBERS */
+/* ========================= */
+
+(function initCounters() {
+
+    const counters = document.querySelectorAll("[data-count]");
+
+    if (!counters.length || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    function run(el) {
+        const target = parseInt(el.dataset.count, 10);
+        const duration = 1400;
+        const start = performance.now();
+
+        function frame(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(target * eased);
+            if (t < 1) requestAnimationFrame(frame);
+        }
+
+        requestAnimationFrame(frame);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                run(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    counters.forEach(el => {
+        el.textContent = "0";
+        observer.observe(el);
     });
 
 })();

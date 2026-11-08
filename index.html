@@ -8,6 +8,23 @@
 <title>Sahil Shaikh | Portfolio</title>
 <meta name="description" content="Sahil Shaikh - Java Full Stack Developer and MCA student. Projects, skills, timeline and contact.">
 
+<!-- Link preview (LinkedIn, WhatsApp, X ...) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sahil Shaikh">
+<meta property="og:title" content="Sahil Shaikh | Portfolio">
+<meta property="og:description" content="Sahil Shaikh - Java Full Stack Developer and MCA student. Projects, skills, timeline and contact.">
+<meta property="og:image" content="https://sahilshaikh450.github.io/portfolio/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sahilshaikh450.github.io/portfolio/og-image.jpg">
+<meta name="theme-color" content="#0b0b0f">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +34,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 
 </head>
 
@@ -156,202 +173,106 @@ from secure REST APIs to polished, animated interfaces.
 
 <!-- TECH STACK -->
 
-<section class="tech-section">
+<section class="page tech-section">
 
 <header class="page-header">
     <span class="eyebrow">Skills</span>
     <h2 class="page-title">Technology Stack</h2>
+    <p class="page-subtitle">The languages, frameworks and tools I build with.</p>
 </header>
 
-<h3 class="tech-category">Languages</h3>
+<div class="skills-grid">
 
-<div class="tech-scroll">
-    <div class="tech-track">
+    <article class="skill-group" style="--g:0">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-code"></i></span>
+            <h3>Languages</h3>
+            <span class="skill-count">5</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="devicon-java-plain colored"></i>Java</li>
+            <li style="--i:1"><i class="devicon-c-plain colored"></i>C</li>
+            <li style="--i:2"><i class="devicon-cplusplus-plain colored"></i>C++</li>
+            <li style="--i:3"><i class="devicon-javascript-plain colored"></i>JavaScript</li>
+            <li style="--i:4"><i class="devicon-mysql-plain colored"></i>SQL</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-java-plain colored"></i>
-            <span>Java</span>
-        </div>
+    <article class="skill-group" style="--g:1">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-layer-group"></i></span>
+            <h3>Frameworks &amp; Libraries</h3>
+            <span class="skill-count">6</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="devicon-spring-plain colored"></i>Spring Boot</li>
+            <li style="--i:1"><i class="devicon-react-original colored"></i>React</li>
+            <li style="--i:2"><i class="devicon-nodejs-plain colored"></i>Node.js</li>
+            <li style="--i:3"><i class="devicon-tailwindcss-original colored"></i>Tailwind CSS</li>
+            <li style="--i:4"><i class="devicon-html5-plain colored"></i>HTML</li>
+            <li style="--i:5"><i class="devicon-css3-plain colored"></i>CSS</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-c-plain colored"></i>
-            <span>C</span>
-        </div>
+    <article class="skill-group" style="--g:2">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-database"></i></span>
+            <h3>Databases</h3>
+            <span class="skill-count">3</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="devicon-mysql-plain colored"></i>MySQL</li>
+            <li style="--i:1"><i class="devicon-mongodb-plain colored"></i>MongoDB</li>
+            <li style="--i:2"><i class="devicon-redis-plain colored"></i>Redis</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-cplusplus-plain colored"></i>
-            <span>C++</span>
-        </div>
+    <article class="skill-group" style="--g:3">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-brain"></i></span>
+            <h3>AI / ML</h3>
+            <span class="skill-count">5</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="fas fa-diagram-project"></i>RAG</li>
+            <li style="--i:1"><i class="fas fa-magnifying-glass"></i>FAISS</li>
+            <li style="--i:2"><i class="fas fa-cubes"></i>Vector DBs</li>
+            <li style="--i:3"><i class="fas fa-robot"></i>LLMs</li>
+            <li style="--i:4"><i class="fas fa-face-smile-beam"></i>HuggingFace</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-javascript-plain colored"></i>
-            <span>JavaScript</span>
-        </div>
+    <article class="skill-group" style="--g:4">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-gears"></i></span>
+            <h3>DevOps &amp; Tools</h3>
+            <span class="skill-count">6</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="devicon-git-plain colored"></i>Git</li>
+            <li style="--i:1"><i class="devicon-github-original"></i>GitHub</li>
+            <li style="--i:2"><i class="devicon-docker-plain colored"></i>Docker</li>
+            <li style="--i:3"><i class="devicon-vercel-original"></i>Vercel</li>
+            <li style="--i:4"><i class="fas fa-server"></i>Render</li>
+            <li style="--i:5"><i class="devicon-postman-plain colored"></i>Postman</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-html5-plain colored"></i>
-            <span>HTML</span>
-        </div>
+    <article class="skill-group" style="--g:5">
+        <header>
+            <span class="skill-group-icon"><i class="fas fa-microchip"></i></span>
+            <h3>Core CS</h3>
+            <span class="skill-count">5</span>
+        </header>
+        <ul class="skill-chips">
+            <li style="--i:0"><i class="fas fa-sitemap"></i>DSA</li>
+            <li style="--i:1"><i class="fas fa-cubes"></i>OOP</li>
+            <li style="--i:2"><i class="fas fa-table"></i>DBMS</li>
+            <li style="--i:3"><i class="fas fa-terminal"></i>Operating Systems</li>
+            <li style="--i:4"><i class="fas fa-network-wired"></i>Networks</li>
+        </ul>
+    </article>
 
-        <div class="tech-card">
-            <i class="devicon-css3-plain colored"></i>
-            <span>CSS</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-react-original colored"></i>
-            <span>React</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-mysql-plain colored"></i>
-            <span>SQL</span>
-        </div>
-
-        <!-- duplicate row for seamless loop -->
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-java-plain colored"></i>
-            <span>Java</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-c-plain colored"></i>
-            <span>C</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-cplusplus-plain colored"></i>
-            <span>C++</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-javascript-plain colored"></i>
-            <span>JavaScript</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-html5-plain colored"></i>
-            <span>HTML</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-css3-plain colored"></i>
-            <span>CSS</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-react-original colored"></i>
-            <span>React</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-mysql-plain colored"></i>
-            <span>SQL</span>
-        </div>
-
-    </div>
-</div>
-
-
-<h3 class="tech-category">Tools &amp; Technologies</h3>
-
-<div class="tech-scroll reverse">
-    <div class="tech-track">
-
-        <div class="tech-card">
-            <i class="devicon-git-plain colored"></i>
-            <span>Git</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-github-original"></i>
-            <span>GitHub</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-vscode-plain colored"></i>
-            <span>VS Code</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-figma-plain colored"></i>
-            <span>Figma</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-spring-plain colored"></i>
-            <span>Spring Boot</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-mysql-plain colored"></i>
-            <span>MySQL</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-mongodb-plain colored"></i>
-            <span>MongoDB</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="devicon-postman-plain colored"></i>
-            <span>Postman</span>
-        </div>
-
-        <div class="tech-card">
-            <i class="fas fa-shield-halved"></i>
-            <span>JWT</span>
-        </div>
-
-        <!-- duplicate row for seamless loop -->
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-git-plain colored"></i>
-            <span>Git</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-github-original"></i>
-            <span>GitHub</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-vscode-plain colored"></i>
-            <span>VS Code</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-figma-plain colored"></i>
-            <span>Figma</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-spring-plain colored"></i>
-            <span>Spring Boot</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-mysql-plain colored"></i>
-            <span>MySQL</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-mongodb-plain colored"></i>
-            <span>MongoDB</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="devicon-postman-plain colored"></i>
-            <span>Postman</span>
-        </div>
-
-        <div class="tech-card" aria-hidden="true">
-            <i class="fas fa-shield-halved"></i>
-            <span>JWT</span>
-        </div>
-
-    </div>
 </div>
 
 </section>
@@ -437,6 +358,75 @@ from secure REST APIs to polished, animated interfaces.
 
 </section>
 
+
+<!-- ACHIEVEMENTS -->
+
+<section class="page">
+
+<header class="page-header">
+    <span class="eyebrow">Milestones</span>
+    <h2 class="page-title">Achievements &amp; Certifications</h2>
+    <p class="page-subtitle">Competitions, coding milestones and certifications along the way.</p>
+</header>
+
+<div class="achieve-grid">
+
+    <a href="https://leetcode.com/u/Sahilshaikh87/" target="_blank" rel="noopener noreferrer" class="achieve-card">
+        <span class="achieve-icon"><i class="fas fa-code"></i></span>
+        <strong class="achieve-number"><span data-count="1713">1713</span></strong>
+        <h3>LeetCode contest rating</h3>
+        <p>300+ DSA problems solved &middot; 200 Days Badge 2026</p>
+    </a>
+
+    <div class="achieve-card">
+        <span class="achieve-icon"><i class="fas fa-trophy"></i></span>
+        <strong class="achieve-number">2<sup>nd</sup></strong>
+        <h3>Decode to Code, PCCOE</h3>
+        <p>Secured 2nd place at the college level</p>
+    </div>
+
+    <div class="achieve-card">
+        <span class="achieve-icon"><i class="fas fa-medal"></i></span>
+        <strong class="achieve-number">3<sup>rd</sup></strong>
+        <h3>Prompt-a-Thon, PCCOE</h3>
+        <p>Secured 3rd place at the college level</p>
+    </div>
+
+</div>
+
+<div class="cert-list">
+
+    <div class="cert-row">
+        <span class="cert-icon"><i class="fas fa-building-columns"></i></span>
+        <div>
+            <h3>Software Engineering Job Simulation</h3>
+            <p>JPMorgan Chase &amp; Co. &middot; Forage</p>
+        </div>
+        <i class="fas fa-certificate cert-seal" aria-hidden="true"></i>
+    </div>
+
+    <div class="cert-row">
+        <span class="cert-icon"><i class="fab fa-hackerrank"></i></span>
+        <div>
+            <h3>Java, SQL, Problem Solving &amp; CSS (Basic)</h3>
+            <p>HackerRank</p>
+        </div>
+        <i class="fas fa-certificate cert-seal" aria-hidden="true"></i>
+    </div>
+
+    <div class="cert-row">
+        <span class="cert-icon"><i class="fas fa-network-wired"></i></span>
+        <div>
+            <h3>Networking Basics</h3>
+            <p>Cisco Networking Academy &middot; 2025</p>
+        </div>
+        <i class="fas fa-certificate cert-seal" aria-hidden="true"></i>
+    </div>
+
+</div>
+
+</section>
+
 </main>
 
 
@@ -509,7 +499,7 @@ from secure REST APIs to polished, animated interfaces.
 </footer>
 
 
-<script src="script.js?v=10"></script>
+<script src="script.js?v=11"></script>
 
 </body>
 </html>
