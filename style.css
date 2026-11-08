@@ -518,14 +518,63 @@ ul {
     gap: 22px;
 }
 
+@property --spin {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
 .skill-group {
+    --a: #a855f7;
+    --a2: #ec4899;
+    --mx: 50%;
+    --my: -30%;
+    --rx: 0deg;
+    --ry: 0deg;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
     padding: 24px;
     border-radius: 22px;
-    background: var(--surface);
+    /* accent glow that follows the mouse */
+    background:
+        radial-gradient(320px circle at var(--mx) var(--my), color-mix(in srgb, var(--a) 16%, transparent), transparent 65%),
+        linear-gradient(160deg, color-mix(in srgb, var(--a) 7%, transparent), transparent 45%),
+        var(--surface);
     border: 1px solid var(--border);
-    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    transition:
+        opacity 0.8s var(--ease) var(--delay, 0s),
+        transform 0.5s var(--ease),
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* keep the tilt working after the scroll-reveal has finished */
+.skill-group.reveal.visible {
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+}
+
+/* rotating accent border, shown on hover */
+.skill-group::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--spin), transparent 0deg, var(--a) 70deg, var(--a2) 140deg, transparent 210deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: borderSpin 3.5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes borderSpin {
+    to { --spin: 360deg; }
 }
 
 /* light sweep across the card when it scrolls into view */
@@ -550,9 +599,12 @@ ul {
 }
 
 .skill-group:hover {
-    transform: translateY(-6px);
-    border-color: rgba(168, 85, 247, 0.4);
-    box-shadow: 0 20px 45px rgba(168, 85, 247, 0.14);
+    border-color: transparent;
+    box-shadow: 0 22px 50px color-mix(in srgb, var(--a) 22%, transparent);
+}
+
+.skill-group:hover::before {
+    opacity: 1;
 }
 
 .skill-group header {
@@ -572,17 +624,19 @@ ul {
     justify-content: center;
     font-size: 17px;
     color: #ffffff;
-    background: var(--grad-soft);
+    background: linear-gradient(135deg, var(--a), var(--a2));
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--a) 40%, transparent);
     transition: transform 0.4s var(--ease);
 }
 
 .skill-group:hover .skill-group-icon {
-    transform: rotate(-10deg) scale(1.08);
+    transform: rotate(-10deg) scale(1.1);
 }
 
 .skill-group h3 {
     flex: 1;
     font-size: 17px;
+    white-space: nowrap;
 }
 
 .skill-count {
@@ -592,8 +646,9 @@ ul {
     font-size: 12px;
     font-weight: 700;
     text-align: center;
-    color: #c4b5fd;
-    background: rgba(139, 92, 246, 0.14);
+    color: var(--a);
+    background: color-mix(in srgb, var(--a) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--a) 30%, transparent);
 }
 
 .skill-chips {
@@ -606,29 +661,40 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 7px 12px;
+    padding: 6px 12px 6px 7px;
     border-radius: 10px;
     font-size: 14px;
     color: var(--text-soft);
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border);
-    transition: transform 0.25s var(--ease), border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    transition: transform 0.25s var(--ease), border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* every chip icon sits on a small tile so dark logos (Java, MySQL, C) stay visible */
 .skill-chips li i {
-    font-size: 17px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 7px;
+    font-size: 15px;
+    background: #f4f4f8;
 }
 
 .skill-chips li .fas {
-    color: #a78bfa;
-    font-size: 14px;
+    font-size: 12px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--a), var(--a2));
 }
 
 .skill-chips li:hover {
     transform: translateY(-3px);
     color: var(--text);
-    border-color: rgba(168, 85, 247, 0.45);
-    background: rgba(168, 85, 247, 0.1);
+    border-color: color-mix(in srgb, var(--a) 60%, transparent);
+    background: color-mix(in srgb, var(--a) 12%, transparent);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--a) 25%, transparent);
 }
 
 /* chips pop in one by one after their card appears */
@@ -2698,8 +2764,22 @@ body.light-mode .footer-cta {
         font-size: 13px;
     }
 
+    .skill-chips li {
+        padding: 5px 10px 5px 6px;
+    }
+
     .skill-chips li i {
-        font-size: 15px;
+        width: 21px;
+        height: 21px;
+        font-size: 13px;
+    }
+
+    .skill-chips li .fas {
+        font-size: 11px;
+    }
+
+    .skill-group h3 {
+        white-space: normal;
     }
 
     .achieve-icon {
