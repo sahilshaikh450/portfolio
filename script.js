@@ -213,7 +213,7 @@ function toggleTheme() {
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
         ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
         ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *",
-        ".skill-group", ".achieve-card", ".cert-row"
+        ".orbit-stage", ".skill-legend", ".achieve-card", ".cert-row"
     ];
 
     const items = document.querySelectorAll(groups.join(","));
@@ -397,44 +397,6 @@ document.querySelectorAll(".project-card").forEach(card => {
     counters.forEach(el => {
         el.textContent = "0";
         observer.observe(el);
-    });
-
-})();
-
-
-/* ========================= */
-/* SKILL CARDS: SPOTLIGHT + TILT */
-/* ========================= */
-
-(function initSkillCards() {
-
-    const cards = document.querySelectorAll(".skill-group");
-
-    if (!cards.length) return;
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    cards.forEach(card => {
-
-        card.addEventListener("mousemove", e => {
-            const r = card.getBoundingClientRect();
-            const x = e.clientX - r.left;
-            const y = e.clientY - r.top;
-            card.style.setProperty("--mx", x + "px");
-            card.style.setProperty("--my", y + "px");
-            if (!calm) {
-                card.style.setProperty("--ry", ((x / r.width) - 0.5) * 8 + "deg");
-                card.style.setProperty("--rx", (0.5 - (y / r.height)) * 8 + "deg");
-            }
-        });
-
-        card.addEventListener("mouseleave", () => {
-            card.style.setProperty("--rx", "0deg");
-            card.style.setProperty("--ry", "0deg");
-            card.style.setProperty("--my", "-30%");
-        });
-
     });
 
 })();
