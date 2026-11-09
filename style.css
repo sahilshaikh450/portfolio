@@ -632,6 +632,23 @@ ul {
     transform: none;
 }
 
+/* nothing of a ball (glow shadow, fallback logo) shows until the assembly starts */
+.skill-balls.reveal:not(.visible) .skill-ball {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* the glow under a ball appears only once it has landed in its slot */
+.skill-balls.reveal .ball-view::after {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skill-balls.reveal.visible .ball-view::after {
+    opacity: 1;
+    transition-delay: calc(var(--i) * 0.07s + 1s);
+}
+
 /* the group itself is only the trigger: keep it in place and fully visible */
 .skill-balls.reveal {
     opacity: 1;
