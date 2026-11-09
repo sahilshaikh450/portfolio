@@ -34,13 +34,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=22">
 
 </head>
 
 <body id="top">
 
 <script>try{if(localStorage.getItem("theme")==="light")document.body.classList.add("light-mode")}catch(e){}</script>
+<script>
+/* Scroll position: a refresh or a new visit always starts at the top (the browser's
+   own restore jumped to the old spot, often mid-page while images were still loading).
+   Back / forward still return to where you were; #anchors still work. */
+try {
+    history.scrollRestoration = "manual";
+    var navType = (performance.getEntriesByType("navigation")[0] || {}).type;
+    var scrollKey = "scroll:" + location.pathname;
+    var savedY = +sessionStorage.getItem(scrollKey) || 0;
+    if (navType === "back_forward" && savedY) {
+        addEventListener("load", function () { scrollTo(0, savedY); });
+    } else if (!location.hash) {
+        scrollTo(0, 0);
+    }
+    addEventListener("pagehide", function () { sessionStorage.setItem(scrollKey, Math.round(scrollY)); });
+} catch (e) {}
+</script>
 
 <!-- SIGNATURE INTRO -->
 
@@ -515,7 +532,7 @@ from secure REST APIs to polished, animated interfaces.
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/DecalGeometry.js"></script>
 <script src="skills3d.js?v=3"></script>
-<script src="script.js?v=21"></script>
+<script src="script.js?v=22"></script>
 
 </body>
 </html>
