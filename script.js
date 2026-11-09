@@ -86,6 +86,7 @@ function toggleTheme() {
         intro.classList.add("intro-exit");
         // release the hero's entrance animation as the curtain lifts
         root.classList.remove("intro-active");
+        document.dispatchEvent(new Event("intro:done"));
         setTimeout(() => intro.remove(), 1100);
     }
 
@@ -213,10 +214,11 @@ function toggleTheme() {
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
         ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
         ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *",
-        ".skill-balls", ".skill-also", ".achieve-card", ".cert-row", ".lc-badges"
+        ".skill-also", ".achieve-card", ".cert-row", ".lc-badges"
     ];
 
-    const items = document.querySelectorAll(groups.join(","));
+    // the skill balls have their own replaying reveal (initAssembly)
+    const items = Array.from(document.querySelectorAll(groups.join(","))).filter(el => !el.matches(".skill-balls"));
 
     if (!("IntersectionObserver" in window)) return;
 
@@ -241,6 +243,43 @@ function toggleTheme() {
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
     items.forEach(el => observer.observe(el));
+
+})();
+
+
+/* ========================= */
+/* SKILL BALLS ASSEMBLY */
+/* ========================= */
+
+/*
+ * The 3D skill balls fly in and snap into place every time the section
+ * comes into view (so also after every refresh), but never while the
+ * intro screen is still covering the page.
+ */
+(function initAssembly() {
+
+    const group = document.querySelector(".skill-balls");
+
+    if (!group || !("IntersectionObserver" in window)) return;
+
+    const root = document.documentElement;
+    let inView = false;
+
+    group.classList.add("reveal");
+
+    function sync() {
+        group.classList.toggle("visible", inView && !root.classList.contains("intro-active"));
+    }
+
+    new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.intersectionRatio >= 0.25) inView = true;
+            else if (!entry.isIntersecting) inView = false;   // fully left: replay next time
+        });
+        sync();
+    }, { threshold: [0, 0.25] }).observe(group);
+
+    document.addEventListener("intro:done", sync);
 
 })();
 
