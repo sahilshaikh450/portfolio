@@ -213,7 +213,7 @@ function toggleTheme() {
         ".page-header", ".tech-section > *", ".project-card", ".info-card", ".stat",
         ".photo-card", ".timeline-item", ".contact-main", ".contact-row", ".panel",
         ".section-cta", ".footer-cta", ".footer-quote", ".footer-grid > *",
-        ".orbit-stage", ".skill-legend", ".achieve-card", ".cert-row"
+        ".skill-ball", ".skill-also", ".achieve-card", ".cert-row"
     ];
 
     const items = document.querySelectorAll(groups.join(","));
