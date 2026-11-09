@@ -1343,6 +1343,100 @@ ul {
     transform: scale(1.2);
 }
 
+/* ---------- LeetCode streak badges (timeline) ---------- */
+.lc-badges {
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+    margin-top: 22px;
+    padding: 26px 10px 8px;
+    border-radius: 16px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 214, 140, 0.10), transparent 60%),
+        rgba(0, 0, 0, 0.18);
+    perspective: 900px;
+}
+
+.lc-badge {
+    margin: 0;
+    width: 130px;
+    text-align: center;
+}
+
+/* entrance: each badge flips in, one after another */
+.lc-badges.reveal:not(.visible) .lc-badge {
+    opacity: 0;
+}
+
+.lc-badges.visible .lc-badge {
+    animation: badgeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--b) * 0.25s);
+}
+
+@keyframes badgeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotateY(-180deg) scale(0.4);
+    }
+}
+
+/* idle: gentle float, each badge slightly out of step */
+.lc-badge-inner {
+    position: relative;
+    animation: badgeFloat 3.6s ease-in-out infinite;
+    animation-delay: calc(var(--b) * -1.2s);
+}
+
+@keyframes badgeFloat {
+    50% { transform: translateY(-9px); }
+}
+
+.lc-badge img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 22px color-mix(in srgb, var(--c) 45%, transparent));
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+/* light glint sweeping across the metal, clipped to the hexagon */
+.lc-badge-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: badgeShine 4.5s ease-in-out infinite;
+    animation-delay: calc(1.4s + var(--b) * 0.6s);
+}
+
+@keyframes badgeShine {
+    0%, 55% { background-position: 150% 0; }
+    85%, 100% { background-position: -60% 0; }
+}
+
+/* hover: full 3D spin and a brighter glow */
+.lc-badge:hover img {
+    transform: rotateY(360deg) scale(1.1);
+    filter: drop-shadow(0 14px 30px color-mix(in srgb, var(--c) 75%, transparent));
+}
+
+.lc-badge figcaption {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fde7b0;
+    background: color-mix(in srgb, var(--c) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+}
+
 /* ========================= */
 /* CONTACT */
 /* ========================= */
@@ -2112,6 +2206,10 @@ body.light-mode .menu-toggle span {
     background: #111827;
 }
 
+body.light-mode .lc-badge figcaption {
+    color: #78350f;
+}
+
 body.light-mode .skill-also em {
     background: #ffffff;
 }
@@ -2342,6 +2440,21 @@ body.light-mode .footer-cta {
 
     .timeline-image {
         width: 100%;
+    }
+
+    .lc-badges {
+        gap: 12px;
+        padding: 18px 6px 6px;
+    }
+
+    .lc-badge {
+        width: 30%;
+        max-width: 96px;
+    }
+
+    .lc-badge figcaption {
+        font-size: 11px;
+        padding: 3px 8px;
     }
 
     .footer {
