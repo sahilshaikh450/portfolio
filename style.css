@@ -334,158 +334,6 @@ ul {
     from { opacity: 0; transform: translateY(24px); }
 }
 
-/* ---------- animated hero ---------- */
-.hero {
-    position: relative;
-    isolation: isolate;
-}
-
-/* full-width animated backdrop behind the hero */
-.hero > .hero-bg {
-    position: absolute;
-    top: -150px;
-    bottom: -110px;
-    left: 50%;
-    width: 100vw;
-    margin: 0;
-    transform: translateX(-50%);
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    /* fade out softly at the bottom instead of ending in a hard line */
-    -webkit-mask-image: linear-gradient(#000 55%, transparent);
-    mask-image: linear-gradient(#000 55%, transparent);
-    animation: heroBgIn 1.6s ease both;
-}
-
-@keyframes heroBgIn {
-    from { opacity: 0; }
-}
-
-/* faint grid, like the intro screen */
-.hero-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(168, 85, 247, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168, 85, 247, 0.07) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 20%, transparent 75%);
-    mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 20%, transparent 75%);
-    animation: gridDrift 18s linear infinite;
-}
-
-@keyframes gridDrift {
-    to { background-position: 64px 64px; }
-}
-
-/* drifting aurora blobs */
-.aurora {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.5;
-}
-
-.aurora-1 {
-    width: 520px;
-    height: 520px;
-    left: 12%;
-    top: 4%;
-    background: rgba(168, 85, 247, 0.55);
-    animation: aurora1 14s ease-in-out infinite alternate;
-}
-
-.aurora-2 {
-    width: 460px;
-    height: 460px;
-    right: 10%;
-    top: 18%;
-    background: rgba(255, 77, 109, 0.4);
-    animation: aurora2 17s ease-in-out infinite alternate;
-}
-
-.aurora-3 {
-    width: 520px;
-    height: 420px;
-    left: 38%;
-    bottom: -8%;
-    background: rgba(59, 130, 246, 0.42);
-    animation: aurora3 20s ease-in-out infinite alternate;
-}
-
-@keyframes aurora1 { to { transform: translate(120px, 80px) scale(1.15); } }
-@keyframes aurora2 { to { transform: translate(-140px, 60px) scale(0.9); } }
-@keyframes aurora3 { to { transform: translate(-80px, -90px) scale(1.2); } }
-
-/* soft light that follows the mouse */
-.hero-spot {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(420px circle at var(--hx, 50%) var(--hy, 40%), rgba(168, 85, 247, 0.16), transparent 70%);
-    transition: background 0.2s ease;
-}
-
-/* floating code symbols */
-.code-sym {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 22px;
-    font-weight: 700;
-    color: rgba(196, 181, 253, 0.28);
-    text-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
-    animation: symFloat 13s ease-in-out infinite;
-    animation-delay: var(--d);
-}
-
-@keyframes symFloat {
-    0%, 100% { transform: translateY(0) rotate(-6deg); opacity: 0.35; }
-    50%      { transform: translateY(-34px) rotate(6deg); opacity: 0.9; }
-}
-
-/* name: letters rise in one by one, then a colour wave keeps sweeping through */
-.hero-name {
-    white-space: nowrap;
-}
-
-.hero-name .l {
-    display: inline-block;
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 30%, #f0abfc 42%, #c4b5fd 50%, #93c5fd 58%, #ffffff 70%, #ffffff 100%);
-    background-size: 900% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation:
-        letterRise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) calc(0.25s + var(--n) * 0.06s) both,
-        nameWave 5s linear calc(1.6s + var(--n) * 0.09s) infinite;
-}
-
-.hero-name-space {
-    display: inline-block;
-    width: 0.28em;
-}
-
-@keyframes letterRise {
-    from {
-        opacity: 0;
-        transform: translateY(0.6em) rotate(8deg);
-        filter: blur(10px);
-    }
-}
-
-@keyframes nameWave {
-    from { background-position: 100% 0; }
-    to   { background-position: 0% 0; }
-}
-
-/* the h1 itself no longer fades as a block: its letters animate instead */
-.hero > h1 {
-    animation: none;
-}
-
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -2195,7 +2043,6 @@ html.intro-active body {
 }
 
 html.intro-active .hero > *,
-html.intro-active .hero-name .l,
 html.intro-active .navbar {
     animation-play-state: paused;
 }
@@ -2478,10 +2325,6 @@ body.light-mode .menu-toggle {
 
 body.light-mode .menu-toggle span {
     background: #111827;
-}
-
-body.light-mode .hero-name .l {
-    background-image: linear-gradient(90deg, #111827 0%, #111827 30%, #db2777 42%, #7c3aed 50%, #2563eb 58%, #111827 70%, #111827 100%);
 }
 
 body.light-mode .hero-badge {
@@ -3558,18 +3401,6 @@ body.light-mode .footer-cta {
         font-size: 27px;
     }
 
-    .code-sym {
-        font-size: 15px;
-    }
-
-    .aurora {
-        filter: blur(70px);
-    }
-
-    .aurora-1 { width: 300px; height: 300px; left: -10%; }
-    .aurora-2 { width: 280px; height: 280px; right: -12%; }
-    .aurora-3 { width: 320px; height: 280px; left: 10%; }
-
 
     .page-title {
         font-size: 26px;
@@ -3586,6 +3417,46 @@ body.light-mode .footer-cta {
     .intro-role {
         font-size: 13px;
         letter-spacing: 4px;
+    }
+
+}
+
+
+/* ========================= */
+/* PHONE PERFORMANCE */
+/* ========================= */
+
+/* Phones and tablets: drop the effects that make the browser repaint large
+   areas every frame (blurred backdrops, endlessly moving gradients). */
+@media (max-width: 768px), (hover: none) {
+
+    body::before {
+        animation: none;
+    }
+
+    .navbar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(20, 22, 40, 0.97);
+    }
+
+    body.light-mode .navbar {
+        background: rgba(255, 255, 255, 0.97);
+    }
+
+    .gradient-text,
+    .page-title,
+    .project-title,
+    .photo-card,
+    .project-art,
+    .word-beautiful {
+        animation: none;
+    }
+
+    .project-art .live-badge,
+    .location-badge {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
 }

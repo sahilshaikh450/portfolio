@@ -30,7 +30,9 @@
     }
 
     document.body.appendChild(canvas);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    // phones have 3x screens; 1.5x is plenty for 80px balls and far cheaper
+    const touch = window.matchMedia("(hover: none)").matches;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, touch ? 1.5 : 2));
     renderer.setClearColor(0x000000, 0);
     renderer.setScissorTest(true);
 
@@ -153,6 +155,7 @@
     }
 
     const clock = new THREE.Clock();
+    let drewLast = false;
 
     function frame() {
 
@@ -163,8 +166,23 @@
         const H = window.innerHeight;
         const W = window.innerWidth;
 
+        // skip all drawing while the skills section is off screen
+        const area = group ? group.getBoundingClientRect() : null;
+        const onScreen = !area || (area.bottom > 0 && area.top < H);
+
+        if (!onScreen) {
+            if (drewLast) {
+                renderer.setScissor(0, 0, W, H);
+                renderer.clear();
+                drewLast = false;
+            }
+            balls.forEach(b => { b.launched = false; });
+            return;
+        }
+
         renderer.setScissor(0, 0, W, H);
         renderer.clear();
+        drewLast = true;
 
         balls.forEach(b => {
 
