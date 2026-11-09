@@ -173,7 +173,10 @@
             if (r.bottom < 0 || r.top > H || r.right < 0 || r.left > W || r.width === 0) return;
 
             // wait for the scroll-reveal; when it starts, give the ball a fast spin for the fly-in
-            if (group && group.classList.contains("reveal") && !group.classList.contains("visible")) return;
+            if (group && group.classList.contains("reveal") && !group.classList.contains("visible")) {
+                b.launched = false;   // spin in again next time the balls assemble
+                return;
+            }
             if (!b.launched) {
                 b.launched = true;
                 b.whirl = calm ? 0 : Math.PI * 4 * (b.phase % 1.4 > 0.7 ? 1 : -1);
