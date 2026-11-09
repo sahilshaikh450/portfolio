@@ -1937,15 +1937,62 @@ ul {
     color: var(--muted);
 }
 
-.heart {
-    display: inline-block;
-    color: #ff4d6d;
-    animation: heartbeat 1.6s ease-in-out infinite;
+.footer-credit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
 }
 
-@keyframes heartbeat {
-    0%, 40%, 100% { transform: scale(1); }
-    20% { transform: scale(1.25); }
+.footer-credit strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.credit-dot {
+    opacity: 0.5;
+}
+
+.credit-code {
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff4d6d, #a855f7, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+/* coffee mug with a little rising steam */
+.credit-coffee {
+    position: relative;
+    display: inline-block;
+    color: #f59e0b;
+}
+
+.credit-coffee::before,
+.credit-coffee::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 7px;
+    border-radius: 2px;
+    background: rgba(245, 158, 11, 0.6);
+    opacity: 0;
+    animation: steam 2.4s ease-in-out infinite;
+}
+
+.credit-coffee::before { left: 4px; }
+.credit-coffee::after { left: 9px; animation-delay: 1.2s; }
+
+@keyframes steam {
+    0%   { opacity: 0; transform: translateY(2px) scaleY(0.6); }
+    40%  { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-7px) scaleY(1.2) skewX(12deg); }
 }
 
 .back-to-top {
@@ -2572,6 +2619,14 @@ body.light-mode .footer-cta {
         flex-direction: column-reverse;
         align-items: center;
         text-align: center;
+    }
+
+    .footer-credit {
+        justify-content: center;
+    }
+
+    .credit-dot {
+        display: none;
     }
 
     .project-body {
