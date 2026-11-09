@@ -618,12 +618,59 @@ ul {
 }
 
 /* balls pop in one by one as the section scrolls into view */
-.skill-ball.reveal {
-    transform: translateY(20px) scale(0.85);
+/* assembly: every ball starts far off-screen on its own side, spinning,
+   then flies in and snaps into its slot one after another */
+.skill-balls.reveal:not(.visible) .skill-ball,
+.skill-balls.reveal .skill-ball {
+    transform: translate(var(--fx), var(--fy)) rotate(var(--fr)) scale(0.4);
+    transition:
+        opacity 0.5s ease calc(var(--i) * 0.07s),
+        transform 1.15s cubic-bezier(0.18, 0.9, 0.22, 1.12) calc(var(--i) * 0.07s);
 }
 
-.skill-ball.reveal.visible {
+.skill-balls.reveal.visible .skill-ball {
     transform: none;
+}
+
+/* the group itself is only the trigger: keep it in place and fully visible */
+.skill-balls.reveal {
+    opacity: 1;
+    transform: none;
+}
+
+/* "click" ring when a ball locks into place */
+.ball-view::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 2px solid rgba(168, 85, 247, 0.9);
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.8), inset 0 0 12px rgba(79, 172, 254, 0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.skill-balls.reveal.visible .ball-view::before {
+    animation: snapRing 0.7s ease-out calc(var(--i) * 0.07s + 1s) both;
+}
+
+@keyframes snapRing {
+    0%   { opacity: 0; transform: scale(0.7); }
+    25%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.55); }
+}
+
+/* labels fade in after their ball has landed */
+.skill-balls.reveal .skill-ball > span {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.skill-balls.reveal.visible .skill-ball > span {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 0.07s + 1s);
 }
 
 /* ========================= */

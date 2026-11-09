@@ -13,6 +13,7 @@
 (function initSkillBalls() {
 
     const items = Array.from(document.querySelectorAll(".skill-ball"));
+    const group = document.querySelector(".skill-balls");
 
     if (!items.length || !window.THREE || !THREE.DecalGeometry) return;
 
@@ -171,8 +172,13 @@
 
             if (r.bottom < 0 || r.top > H || r.right < 0 || r.left > W || r.width === 0) return;
 
-            // wait for the scroll-reveal before drawing the ball
-            if (b.el.classList.contains("reveal") && !b.el.classList.contains("visible")) return;
+            // wait for the scroll-reveal; when it starts, give the ball a fast spin for the fly-in
+            if (group && group.classList.contains("reveal") && !group.classList.contains("visible")) return;
+            if (!b.launched) {
+                b.launched = true;
+                b.whirl = calm ? 0 : Math.PI * 4 * (b.phase % 1.4 > 0.7 ? 1 : -1);
+            }
+            b.whirl = (b.whirl || 0) * 0.94;
 
             // idle spin + gentle float
             if (!calm && !b.hover && b.drag === null) b.spin += 0.006;
@@ -184,7 +190,8 @@
             b.rx += (b.tx - b.rx) * 0.12;
             b.ry += (b.ty - b.ry) * 0.12;
             b.group.rotation.x = b.rx;
-            b.group.rotation.y = b.ry + Math.sin(b.spin) * 0.6;
+            b.group.rotation.y = b.ry + Math.sin(b.spin) * 0.6 + (b.whirl || 0);
+            b.group.rotation.z = (b.whirl || 0) * 0.15;
             b.group.position.y = calm ? 0 : Math.sin(t * 1.6 + b.phase) * 0.06;
             b.group.scale.setScalar(b.hover ? 1.08 : 1);
 
