@@ -248,6 +248,27 @@ function toggleTheme() {
 
 
 /* ========================= */
+/* HERO MOUSE LIGHT */
+/* ========================= */
+
+(function initHeroLight() {
+
+    const hero = document.querySelector(".hero");
+    const bg = hero && hero.querySelector(".hero-bg");
+
+    if (!bg || !window.matchMedia("(hover: hover)").matches) return;
+
+    window.addEventListener("mousemove", e => {
+        const r = bg.getBoundingClientRect();
+        if (e.clientY > r.bottom) return;
+        bg.style.setProperty("--hx", e.clientX - r.left + "px");
+        bg.style.setProperty("--hy", e.clientY - r.top + "px");
+    }, { passive: true });
+
+})();
+
+
+/* ========================= */
 /* SKILL BALLS ASSEMBLY */
 /* ========================= */
 
