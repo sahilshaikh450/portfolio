@@ -486,38 +486,6 @@ ul {
     animation: none;
 }
 
-/* scroll cue: a little mouse with a moving dot */
-.hero > .scroll-cue {
-    display: flex;
-    justify-content: center;
-    width: 26px;
-    height: 42px;
-    margin-top: 54px;
-    padding-top: 8px;
-    border-radius: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    transition: border-color 0.3s ease;
-    animation: fadeUp 0.9s var(--ease) 0.9s both;
-}
-
-.scroll-cue:hover {
-    border-color: #a855f7;
-}
-
-.scroll-cue span {
-    width: 4px;
-    height: 8px;
-    border-radius: 4px;
-    background: linear-gradient(#ff4d6d, #a855f7);
-    animation: cueDot 1.8s ease-in-out infinite;
-}
-
-@keyframes cueDot {
-    0%   { transform: translateY(0); opacity: 0; }
-    30%  { opacity: 1; }
-    100% { transform: translateY(16px); opacity: 0; }
-}
-
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -700,6 +668,11 @@ ul {
 /* ========================= */
 /* TECH STACK (3D skill balls) */
 /* ========================= */
+
+/* sit the skills close under the hero */
+.hero + .tech-section {
+    margin-top: 30px;
+}
 
 .skill-balls {
     display: flex;
@@ -3046,6 +3019,10 @@ body.light-mode .footer-cta {
         margin: 40px auto;
     }
 
+    .hero + .tech-section {
+        margin-top: 16px;
+    }
+
     .page-header {
         margin-bottom: 26px;
     }
@@ -3580,9 +3557,6 @@ body.light-mode .footer-cta {
     .aurora-2 { width: 280px; height: 280px; right: -12%; }
     .aurora-3 { width: 320px; height: 280px; left: 10%; }
 
-    .hero > .scroll-cue {
-        margin-top: 36px;
-    }
 
     .page-title {
         font-size: 26px;
